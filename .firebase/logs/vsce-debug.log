@@ -1,0 +1,183 @@
+[debug] [2026-03-25T01:47:58.103Z] [Firebase Plugin] Activating Firebase extension.
+[debug] [2026-03-25T01:47:59.210Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-03-25T01:47:59.211Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-25T01:47:59.233Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[info] [Firebase Plugin] Starting Data Connect toolkit (version 3.2.1) on port 50001
+[info] i  dataconnect: downloading dataconnect-emulator-3.2.1... {"metadata":{"emulator":{"name":"dataconnect"},"message":"downloading dataconnect-emulator-3.2.1..."}}
+[debug] [2026-03-25T01:47:59.493Z] >>> [apiv2][query] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-macos-arm64-v3.2.1 
+[error] [Firebase Plugin] requireAuth error: Could not load the default credentials. Browse to https://cloud.google.com/docs/authentication/getting-started for more information.
+[debug] [2026-03-25T01:47:59.887Z] <<< [apiv2][status] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-macos-arm64-v3.2.1 200
+[debug] [2026-03-25T01:47:59.888Z] <<< [apiv2][body] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-macos-arm64-v3.2.1 [stream]
+[debug] [2026-03-25T01:48:17.889Z] 'fdc build' failed with error: Unable to build your Data Connect schema and connectors (exit code 1): E0324 20:48:17.887851    6546 cmd.go:43] Error loading data connect config: could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"'fdc build' failed with error: Unable to build your Data Connect schema and connectors (exit code 1): E0324 20:48:17.887851    6546 cmd.go:43] Error loading data connect config: could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`\n"}}
+[debug] [2026-03-25T01:48:17.889Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2026-03-25T01:48:17.890Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2026-03-25T01:48:17.890Z] Starting Data Connect Emulator with command {"binary":"/Users/charlesmotherwell/.cache/firebase/emulators/dataconnect-emulator-3.2.1","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting Data Connect Emulator with command {\"binary\":\"/Users/charlesmotherwell/.cache/firebase/emulators/dataconnect-emulator-3.2.1\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: Data Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"Data Connect Emulator logging to dataconnect-debug.log"}}
+[debug] [2026-03-25T01:48:17.912Z] E0324 20:48:17.911964    6550 dev.go:83] Failed to load initial config from "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:48:17.911964    6550 dev.go:83] Failed to load initial config from \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect\": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`\n"}}
+[debug] [2026-03-25T01:48:17.912Z] E0324 20:48:17.912290    6550 watch.go:116] watchAllDir unable to walk dir `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`: lstat /Users/charlesmotherwell/Documents/GitHub/localized/dataconnect: no such file or directory
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:48:17.912290    6550 watch.go:116] watchAllDir unable to walk dir `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`: lstat /Users/charlesmotherwell/Documents/GitHub/localized/dataconnect: no such file or directory\n"}}
+[debug] [2026-03-25T01:48:17.913Z] I0324 20:48:17.913552    6550 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:48:17.913552    6550 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[error] [Firebase Plugin] error:  {}
+[debug] [2026-03-25T01:48:18.840Z] [Firebase Plugin] Value of process.env.MONOSPACE_ENV: undefined
+[debug] [2026-03-25T01:48:18.841Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-03-25T01:48:18.841Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[error] [Firebase Plugin] requireAuth error: Could not load the default credentials. Browse to https://cloud.google.com/docs/authentication/getting-started for more information.
+[debug] [2026-03-25T01:48:18.842Z] [Firebase Plugin] Value of process.env.MONOSPACE_ENV: undefined
+[debug] [2026-03-25T01:48:18.842Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-03-25T01:48:18.843Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[error] [Firebase Plugin] requireAuth error: Could not load the default credentials. Browse to https://cloud.google.com/docs/authentication/getting-started for more information.
+[debug] [2026-03-25T01:48:27.915Z] E0324 20:48:27.913708    6550 watch.go:40] Failed to load config from "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:48:27.913708    6550 watch.go:40] Failed to load config from \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect\": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`\n"}}
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=546921065&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+[info] 
+[info] Waiting for authentication...
+[debug] [2026-03-25T01:48:37.914Z] E0324 20:48:37.913230    6550 watch.go:40] Failed to load config from "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:48:37.913230    6550 watch.go:40] Failed to load config from \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect\": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`\n"}}
+[debug] [2026-03-25T01:48:39.963Z] >>> [apiv2][query] POST https://accounts.google.com/o/oauth2/token [none]
+[debug] [2026-03-25T01:48:39.963Z] >>> [apiv2][body] POST https://accounts.google.com/o/oauth2/token [omitted]
+[debug] [2026-03-25T01:48:40.321Z] <<< [apiv2][status] POST https://accounts.google.com/o/oauth2/token 200
+[debug] [2026-03-25T01:48:40.321Z] <<< [apiv2][body] POST https://accounts.google.com/o/oauth2/token [omitted]
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-03-25T01:48:40.364Z] Checked if tokens are valid: true, expires at: 1774406919321
+[debug] [2026-03-25T01:48:40.364Z] Checked if tokens are valid: true, expires at: 1774406919321
+[debug] [2026-03-25T01:48:40.365Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-03-25T01:48:40.945Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-03-25T01:48:40.945Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2026-03-25T01:48:47.920Z] E0324 20:48:47.914028    6550 watch.go:40] Failed to load config from "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:48:47.914028    6550 watch.go:40] Failed to load config from \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect\": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`\n"}}
+[debug] [2026-03-25T01:48:57.912Z] E0324 20:48:57.912339    6550 watch.go:40] Failed to load config from "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:48:57.912339    6550 watch.go:40] Failed to load config from \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect\": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`\n"}}
+[debug] [2026-03-25T01:49:07.912Z] E0324 20:49:07.911435    6550 watch.go:40] Failed to load config from "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:49:07.911435    6550 watch.go:40] Failed to load config from \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect\": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`\n"}}
+[debug] [2026-03-25T01:49:17.915Z] E0324 20:49:17.910884    6550 watch.go:116] watchAllDir unable to walk dir `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`: lstat /Users/charlesmotherwell/Documents/GitHub/localized/dataconnect: no such file or directory
+E0324 20:49:17.912296    6550 watch.go:40] Failed to load config from "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:49:17.910884    6550 watch.go:116] watchAllDir unable to walk dir `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`: lstat /Users/charlesmotherwell/Documents/GitHub/localized/dataconnect: no such file or directory\nE0324 20:49:17.912296    6550 watch.go:40] Failed to load config from \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect\": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`\n"}}
+[debug] [2026-03-25T01:49:27.913Z] E0324 20:49:27.913127    6550 watch.go:40] Failed to load config from "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:49:27.913127    6550 watch.go:40] Failed to load config from \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect\": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`\n"}}
+[debug] [2026-03-25T01:49:37.910Z] E0324 20:49:37.910251    6550 watch.go:40] Failed to load config from "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:49:37.910251    6550 watch.go:40] Failed to load config from \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect\": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`\n"}}
+[debug] [2026-03-25T01:49:47.911Z] E0324 20:49:47.909895    6550 watch.go:40] Failed to load config from "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:49:47.909895    6550 watch.go:40] Failed to load config from \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect\": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`\n"}}
+[debug] [2026-03-25T01:49:57.908Z] E0324 20:49:57.908174    6550 watch.go:40] Failed to load config from "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:49:57.908174    6550 watch.go:40] Failed to load config from \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect\": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`\n"}}
+[debug] [2026-03-25T01:50:07.910Z] E0324 20:50:07.909187    6550 watch.go:40] Failed to load config from "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:50:07.909187    6550 watch.go:40] Failed to load config from \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect\": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`\n"}}
+[debug] [2026-03-25T01:50:17.908Z] E0324 20:50:17.907863    6550 watch.go:40] Failed to load config from "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:50:17.907863    6550 watch.go:40] Failed to load config from \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect\": could not find dataconnect.yaml in `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`\n"}}
+[debug] [2026-03-25T01:50:17.909Z] E0324 20:50:17.907726    6550 watch.go:116] watchAllDir unable to walk dir `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`: lstat /Users/charlesmotherwell/Documents/GitHub/localized/dataconnect: no such file or directory
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:50:17.907726    6550 watch.go:116] watchAllDir unable to walk dir `/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect`: lstat /Users/charlesmotherwell/Documents/GitHub/localized/dataconnect: no such file or directory\n"}}
+[debug] [2026-03-25T01:50:27.921Z] I0324 20:50:27.920523    6550 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:50:27.920523    6550 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-03-25T01:50:27.972Z] I0324 20:50:27.971821    6550 control.go:100] [projects/emulator/locations/emulator/services/localized-arkansas-service e710] UpdateResources(): done
+Main schema: sources: schema/schema.gql [977B] 
+Connector "example": sources: 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:50:27.971821    6550 control.go:100] [projects/emulator/locations/emulator/services/localized-arkansas-service e710] UpdateResources(): done\nMain schema: sources: schema/schema.gql [977B] \nConnector \"example\": sources: \n"}}
+[debug] [2026-03-25T01:50:27.987Z] E0324 20:50:27.987353    6550 load.go:95] Errors generating SDK: [connector "example"]: invalid Data Connect Connector no query found in connector
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:50:27.987353    6550 load.go:95] Errors generating SDK: [connector \"example\"]: invalid Data Connect Connector no query found in connector\n"}}
+[debug] [2026-03-25T01:50:27.989Z] I0324 20:50:27.989026    6550 collector.go:107] schema extensions wrote into "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect/.dataconnect/schema"
+Generated sources: main/implicit.gql [2800B] main/input.gql [57747B] main/relation.gql [29571B] main/query.gql [7544B] main/mutation.gql [20389B] prelude.gql [80731B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:50:27.989026    6550 collector.go:107] schema extensions wrote into \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect/.dataconnect/schema\"\nGenerated sources: main/implicit.gql [2800B] main/input.gql [57747B] main/relation.gql [29571B] main/query.gql [7544B] main/mutation.gql [20389B] prelude.gql [80731B] \n"}}
+[debug] [2026-03-25T01:50:27.989Z] I0324 20:50:27.989179    6550 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:50:27.989179    6550 load.go:109] Finished reloading\n"}}
+[debug] [2026-03-25T01:55:37.934Z] I0324 20:55:37.929623    6550 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:55:37.929623    6550 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-03-25T01:55:37.980Z] I0324 20:55:37.978959    6550 control.go:100] [projects/emulator/locations/emulator/services/localized-arkansas-service 79ff] UpdateResources(): done
+Main schema: sources: schema/schema.gql [977B] 
+Connector "users": sources: 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:55:37.978959    6550 control.go:100] [projects/emulator/locations/emulator/services/localized-arkansas-service 79ff] UpdateResources(): done\nMain schema: sources: schema/schema.gql [977B] \nConnector \"users\": sources: \n"}}
+[debug] [2026-03-25T01:55:37.997Z] E0324 20:55:37.997178    6550 load.go:95] Errors generating SDK: [connector "users"]: invalid Data Connect Connector no query found in connector
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:55:37.997178    6550 load.go:95] Errors generating SDK: [connector \"users\"]: invalid Data Connect Connector no query found in connector\n"}}
+[debug] [2026-03-25T01:55:38.000Z] I0324 20:55:38.000258    6550 collector.go:107] schema extensions wrote into "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [80731B] main/implicit.gql [2800B] main/input.gql [57747B] main/relation.gql [29571B] main/query.gql [7544B] main/mutation.gql [20389B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:55:38.000258    6550 collector.go:107] schema extensions wrote into \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [80731B] main/implicit.gql [2800B] main/input.gql [57747B] main/relation.gql [29571B] main/query.gql [7544B] main/mutation.gql [20389B] \n"}}
+[debug] [2026-03-25T01:55:38.000Z] I0324 20:55:38.000495    6550 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:55:38.000495    6550 load.go:109] Finished reloading\n"}}
+[debug] [2026-03-25T01:55:57.932Z] I0324 20:55:57.931284    6550 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:55:57.931284    6550 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-03-25T01:55:57.953Z] I0324 20:55:57.953507    6550 control.go:100] [projects/emulator/locations/emulator/services/localized-arkansas-service 5b00] UpdateResources(): done
+Main schema: sources: schema/schema.gql [977B] 
+Connector "example": sources: 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:55:57.953507    6550 control.go:100] [projects/emulator/locations/emulator/services/localized-arkansas-service 5b00] UpdateResources(): done\nMain schema: sources: schema/schema.gql [977B] \nConnector \"example\": sources: \n"}}
+[debug] [2026-03-25T01:55:57.970Z] E0324 20:55:57.970114    6550 load.go:95] Errors generating SDK: [connector "example"]: invalid Data Connect Connector no query found in connector
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:55:57.970114    6550 load.go:95] Errors generating SDK: [connector \"example\"]: invalid Data Connect Connector no query found in connector\n"}}
+[debug] [2026-03-25T01:55:57.972Z] I0324 20:55:57.972248    6550 collector.go:107] schema extensions wrote into "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect/.dataconnect/schema"
+Generated sources: main/query.gql [7544B] main/mutation.gql [20389B] main/implicit.gql [2800B] main/input.gql [57747B] main/relation.gql [29571B] prelude.gql [80731B] 
+I0324 20:55:57.972273    6550 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:55:57.972248    6550 collector.go:107] schema extensions wrote into \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect/.dataconnect/schema\"\nGenerated sources: main/query.gql [7544B] main/mutation.gql [20389B] main/implicit.gql [2800B] main/input.gql [57747B] main/relation.gql [29571B] prelude.gql [80731B] \nI0324 20:55:57.972273    6550 load.go:109] Finished reloading\n"}}
+[debug] [2026-03-25T01:56:07.929Z] I0324 20:56:07.928691    6550 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:56:07.928691    6550 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-03-25T01:56:07.944Z] I0324 20:56:07.944420    6550 control.go:100] [projects/emulator/locations/emulator/services/localized-arkansas-service 513b] UpdateResources(): done
+Main schema: sources: schema/schema.gql [977B] 
+Connector "users": sources: 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:56:07.944420    6550 control.go:100] [projects/emulator/locations/emulator/services/localized-arkansas-service 513b] UpdateResources(): done\nMain schema: sources: schema/schema.gql [977B] \nConnector \"users\": sources: \n"}}
+[debug] [2026-03-25T01:56:07.958Z] E0324 20:56:07.958831    6550 load.go:95] Errors generating SDK: [connector "users"]: invalid Data Connect Connector no query found in connector
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 20:56:07.958831    6550 load.go:95] Errors generating SDK: [connector \"users\"]: invalid Data Connect Connector no query found in connector\n"}}
+[debug] [2026-03-25T01:56:07.960Z] I0324 20:56:07.960219    6550 collector.go:107] schema extensions wrote into "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [80731B] main/relation.gql [29571B] main/query.gql [7544B] main/mutation.gql [20389B] main/implicit.gql [2800B] main/input.gql [57747B] 
+I0324 20:56:07.960239    6550 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 20:56:07.960219    6550 collector.go:107] schema extensions wrote into \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [80731B] main/relation.gql [29571B] main/query.gql [7544B] main/mutation.gql [20389B] main/implicit.gql [2800B] main/input.gql [57747B] \nI0324 20:56:07.960239    6550 load.go:109] Finished reloading\n"}}
+[debug] [2026-03-25T02:00:57.920Z] I0324 21:00:57.916238    6550 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 21:00:57.916238    6550 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-03-25T02:00:57.980Z] W0324 21:00:57.979738    6550 control.go:74] [projects/emulator/locations/emulator/services/localized-arkansas-service ef27] connector "users" has errors: example/users.gql:2:12: Variable "$id" of type "String!" used in position expecting type "UUID".
+example/users.gql:10:3: Cannot query field "listUsers" on type "Query". Did you mean "users"?
+example/users.gql:19:3: Cannot query field "createUser" on type "Mutation".
+example/users.gql:28:3: Cannot query field "updateUser" on type "Mutation".
+
+sources: example/users.gql [494B] 
+I0324 21:00:57.980562    6550 control.go:100] [projects/emulator/locations/emulator/services/localized-arkansas-service ef27] UpdateResources(): done
+Main schema: sources: schema/schema.gql [977B] 
+Connector "users": sources: example/users.gql [494B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"W0324 21:00:57.979738    6550 control.go:74] [projects/emulator/locations/emulator/services/localized-arkansas-service ef27] connector \"users\" has errors: example/users.gql:2:12: Variable \"$id\" of type \"String!\" used in position expecting type \"UUID\".\nexample/users.gql:10:3: Cannot query field \"listUsers\" on type \"Query\". Did you mean \"users\"?\nexample/users.gql:19:3: Cannot query field \"createUser\" on type \"Mutation\".\nexample/users.gql:28:3: Cannot query field \"updateUser\" on type \"Mutation\".\n\nsources: example/users.gql [494B] \nI0324 21:00:57.980562    6550 control.go:100] [projects/emulator/locations/emulator/services/localized-arkansas-service ef27] UpdateResources(): done\nMain schema: sources: schema/schema.gql [977B] \nConnector \"users\": sources: example/users.gql [494B] \n"}}
+[debug] [2026-03-25T02:00:57.984Z] E0324 21:00:57.984296    6550 load.go:73] Could not load sources: 
+Errors: example/users.gql:2:12: Variable "$id" of type "String!" used in position expecting type "UUID".
+example/users.gql:10:3: Cannot query field "listUsers" on type "Query". Did you mean "users"?
+example/users.gql:19:3: Cannot query field "createUser" on type "Mutation".
+example/users.gql:28:3: Cannot query field "updateUser" on type "Mutation".
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 21:00:57.984296    6550 load.go:73] Could not load sources: \nErrors: example/users.gql:2:12: Variable \"$id\" of type \"String!\" used in position expecting type \"UUID\".\nexample/users.gql:10:3: Cannot query field \"listUsers\" on type \"Query\". Did you mean \"users\"?\nexample/users.gql:19:3: Cannot query field \"createUser\" on type \"Mutation\".\nexample/users.gql:28:3: Cannot query field \"updateUser\" on type \"Mutation\".\n"}}
+[debug] [2026-03-25T02:00:57.987Z] I0324 21:00:57.987581    6550 collector.go:107] schema extensions wrote into "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [80731B] main/implicit.gql [2800B] main/input.gql [57747B] main/relation.gql [29571B] main/query.gql [7544B] main/mutation.gql [20389B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 21:00:57.987581    6550 collector.go:107] schema extensions wrote into \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [80731B] main/implicit.gql [2800B] main/input.gql [57747B] main/relation.gql [29571B] main/query.gql [7544B] main/mutation.gql [20389B] \n"}}
+[debug] [2026-03-25T02:00:57.988Z] I0324 21:00:57.987774    6550 load.go:74] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 21:00:57.987774    6550 load.go:74] Finished reloading\n"}}
+[debug] [2026-03-25T02:03:47.910Z] I0324 21:03:47.909972    6550 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 21:03:47.909972    6550 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-03-25T02:03:47.934Z] W0324 21:03:47.933726    6550 control.go:74] [projects/emulator/locations/emulator/services/localized-arkansas-service ad97] connector "users" has errors: example/users.gql:2:3: Unknown argument "username" on field "Query.user".
+example/users.gql:13:3: Cannot query field "userList" on type "Query". Did you mean "users", "_service", "_select", or "user"?
+example/users.gql:28:5: Cannot query field "username" on type "User_KeyOutput".
+example/users.gql:29:5: Cannot query field "email" on type "User_KeyOutput".
+example/users.gql:30:5: Cannot query field "isVerified" on type "User_KeyOutput".
+example/users.gql:31:5: Cannot query field "createdAt" on type "User_KeyOutput".
+example/users.gql:23:3: Unknown argument "username" on field "Mutation.user_insert".
+example/users.gql:23:3: Unknown argument "email" on field "Mutation.user_insert".
+example/users.gql:23:3: Unknown argument "passwordHash" on field "Mutation.user_insert".
+example/users.gql:23:3: Field "user_insert" argument "data" of type "User_Data!" is required, but it was not provided.
+example/users.gql:23:3: Field "user_insert" must not have a selection since type "User_KeyOutput" has no subfields.
+
+sources: example/users.gql [507B] 
+I0324 21:03:47.933797    6550 control.go:100] [projects/emulator/locations/emulator/services/localized-arkansas-service ad97] UpdateResources(): done
+Main schema: sources: schema/schema.gql [977B] 
+Connector "users": sources: example/users.gql [507B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"W0324 21:03:47.933726    6550 control.go:74] [projects/emulator/locations/emulator/services/localized-arkansas-service ad97] connector \"users\" has errors: example/users.gql:2:3: Unknown argument \"username\" on field \"Query.user\".\nexample/users.gql:13:3: Cannot query field \"userList\" on type \"Query\". Did you mean \"users\", \"_service\", \"_select\", or \"user\"?\nexample/users.gql:28:5: Cannot query field \"username\" on type \"User_KeyOutput\".\nexample/users.gql:29:5: Cannot query field \"email\" on type \"User_KeyOutput\".\nexample/users.gql:30:5: Cannot query field \"isVerified\" on type \"User_KeyOutput\".\nexample/users.gql:31:5: Cannot query field \"createdAt\" on type \"User_KeyOutput\".\nexample/users.gql:23:3: Unknown argument \"username\" on field \"Mutation.user_insert\".\nexample/users.gql:23:3: Unknown argument \"email\" on field \"Mutation.user_insert\".\nexample/users.gql:23:3: Unknown argument \"passwordHash\" on field \"Mutation.user_insert\".\nexample/users.gql:23:3: Field \"user_insert\" argument \"data\" of type \"User_Data!\" is required, but it was not provided.\nexample/users.gql:23:3: Field \"user_insert\" must not have a selection since type \"User_KeyOutput\" has no subfields.\n\nsources: example/users.gql [507B] \nI0324 21:03:47.933797    6550 control.go:100] [projects/emulator/locations/emulator/services/localized-arkansas-service ad97] UpdateResources(): done\nMain schema: sources: schema/schema.gql [977B] \nConnector \"users\": sources: example/users.gql [507B] \n"}}
+[debug] [2026-03-25T02:03:47.936Z] E0324 21:03:47.936151    6550 load.go:73] Could not load sources: 
+Errors: example/users.gql:2:3: Unknown argument "username" on field "Query.user".
+example/users.gql:13:3: Cannot query field "userList" on type "Query". Did you mean "users", "_service", "_select", or "user"?
+example/users.gql:28:5: Cannot query field "username" on type "User_KeyOutput".
+example/users.gql:29:5: Cannot query field "email" on type "User_KeyOutput".
+example/users.gql:30:5: Cannot query field "isVerified" on type "User_KeyOutput".
+example/users.gql:31:5: Cannot query field "createdAt" on type "User_KeyOutput".
+example/users.gql:23:3: Unknown argument "username" on field "Mutation.user_insert".
+example/users.gql:23:3: Unknown argument "email" on field "Mutation.user_insert".
+example/users.gql:23:3: Unknown argument "passwordHash" on field "Mutation.user_insert".
+example/users.gql:23:3: Field "user_insert" argument "data" of type "User_Data!" is required, but it was not provided.
+example/users.gql:23:3: Field "user_insert" must not have a selection since type "User_KeyOutput" has no subfields.
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0324 21:03:47.936151    6550 load.go:73] Could not load sources: \nErrors: example/users.gql:2:3: Unknown argument \"username\" on field \"Query.user\".\nexample/users.gql:13:3: Cannot query field \"userList\" on type \"Query\". Did you mean \"users\", \"_service\", \"_select\", or \"user\"?\nexample/users.gql:28:5: Cannot query field \"username\" on type \"User_KeyOutput\".\nexample/users.gql:29:5: Cannot query field \"email\" on type \"User_KeyOutput\".\nexample/users.gql:30:5: Cannot query field \"isVerified\" on type \"User_KeyOutput\".\nexample/users.gql:31:5: Cannot query field \"createdAt\" on type \"User_KeyOutput\".\nexample/users.gql:23:3: Unknown argument \"username\" on field \"Mutation.user_insert\".\nexample/users.gql:23:3: Unknown argument \"email\" on field \"Mutation.user_insert\".\nexample/users.gql:23:3: Unknown argument \"passwordHash\" on field \"Mutation.user_insert\".\nexample/users.gql:23:3: Field \"user_insert\" argument \"data\" of type \"User_Data!\" is required, but it was not provided.\nexample/users.gql:23:3: Field \"user_insert\" must not have a selection since type \"User_KeyOutput\" has no subfields.\n"}}
+[debug] [2026-03-25T02:03:47.941Z] I0324 21:03:47.941197    6550 collector.go:107] schema extensions wrote into "/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [80731B] main/implicit.gql [2800B] main/input.gql [57747B] main/relation.gql [29571B] main/query.gql [7544B] main/mutation.gql [20389B] 
+I0324 21:03:47.941224    6550 load.go:74] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0324 21:03:47.941197    6550 collector.go:107] schema extensions wrote into \"/Users/charlesmotherwell/Documents/GitHub/localized/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [80731B] main/implicit.gql [2800B] main/input.gql [57747B] main/relation.gql [29571B] main/query.gql [7544B] main/mutation.gql [20389B] \nI0324 21:03:47.941224    6550 load.go:74] Finished reloading\n"}}
+[info] [Firebase Plugin] Stopping Data Connect toolkit

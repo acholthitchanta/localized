@@ -1,6 +1,8 @@
 import React, {useContext, useState, useEffect} from 'react'
-import { auth } from '../firebase'
-import { createUserWithEmailAndPassword,onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updatePassword, updateEmail, verifyBeforeUpdateEmail} from 'firebase/auth'
+import { auth, dataConnect } from '../firebase'
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updatePassword, verifyBeforeUpdateEmail} from 'firebase/auth'
+import { executeQuery } from '@firebase/data-connect'
+import { sha256 } from 'js-sha256'
 
 const AuthContext = React.createContext()
 
@@ -9,12 +11,33 @@ export function useAuth(){
 }
 
 export function AuthProvider({children}) {
-
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
 
-    function signup(email, password){
-        return createUserWithEmailAndPassword(auth, email, password)
+    async function signup(email, password, displayName = '') {
+        // Create Firebase Auth user
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+        
+        // Hash the password for database storage
+        const passwordHash = sha256(password)
+        
+        // Create username from email
+        const username = email.split('@')[0]
+        
+        // Create user record in database
+        try {
+            const result = await executeQuery(dataConnect, 'CreateUser', {
+                username: username,
+                email: email,
+                passwordHash: passwordHash
+            })
+            console.log('User created in database:', result)
+        } catch (error) {
+            console.error('Error creating user in database:', error)
+            // User created in Firebase but not in database - consider this non-critical for now
+        }
+        
+        return userCredential
     }
 
     function login(email, password){
@@ -39,9 +62,9 @@ export function AuthProvider({children}) {
     }
 
     useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth, (user) =>{
-        setLoading(false)
-        setCurrentUser(user)
+        const unsubscribe = onAuthStateChanged(auth, async (user) =>{
+            setLoading(false)
+            setCurrentUser(user)
         })
 
         return unsubscribe
@@ -54,7 +77,8 @@ export function AuthProvider({children}) {
         logout,
         resetPassword,
         emailUpdate,
-        passwordUpdate
+        passwordUpdate,
+        dataConnect
     }
 
     return (

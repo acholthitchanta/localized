@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from 'react'
+import React, {useRef, useState} from 'react'
 import { Card, Form, Button, Alert } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,6 +8,7 @@ export default function SignUp() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
+    const displayNameRef = useRef();
     const {signup} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
@@ -23,11 +24,15 @@ export default function SignUp() {
         try{
             setError('')
             setLoading(true)
+            await signup(
+                emailRef.current.value, 
+                passwordRef.current.value,
+                displayNameRef.current.value
+            )
             navigate('/')
-            await signup(emailRef.current.value, passwordRef.current.value)
         }
-        catch{
-            setError('failed to create an account')
+        catch(err){
+            setError('failed to create an account: ' + err.message)
         }
         setLoading(false)
 
@@ -42,6 +47,11 @@ export default function SignUp() {
                 <Form.Group id="email">
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" ref={emailRef} required />
+                </Form.Group>
+
+                <Form.Group id="display-name">
+                    <Form.Label>Display Name</Form.Label>
+                    <Form.Control type="text" ref={displayNameRef} />
                 </Form.Group>
 
                 <Form.Group id="password">

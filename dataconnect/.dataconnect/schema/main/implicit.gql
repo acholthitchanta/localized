@@ -1,0 +1,56 @@
+extend type Business {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Business", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Business`.`category`. It must match the value of `Category`.`id`. See `@ref` for how to customize it.
+  """
+  categoryId: UUID! @fdc_generated(from: "Business.category", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Category {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Category", purpose: IMPLICIT_KEY_FIELD)
+}
+extend type Deal {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Deal", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Deal`.`business`. It must match the value of `Business`.`id`. See `@ref` for how to customize it.
+  """
+  businessId: UUID! @fdc_generated(from: "Deal.business", purpose: IMPLICIT_REF_FIELD)
+}
+extend type FavoriteBusiness {
+  """
+  ✨ Implicit foreign key field based on `FavoriteBusiness`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: UUID! @fdc_generated(from: "FavoriteBusiness.user", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `FavoriteBusiness`.`business`. It must match the value of `Business`.`id`. See `@ref` for how to customize it.
+  """
+  businessId: UUID! @fdc_generated(from: "FavoriteBusiness.business", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Review {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Review", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Review`.`business`. It must match the value of `Business`.`id`. See `@ref` for how to customize it.
+  """
+  businessId: UUID! @fdc_generated(from: "Review.business", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Review`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: UUID! @fdc_generated(from: "Review.user", purpose: IMPLICIT_REF_FIELD)
+}
+extend type User {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "User", purpose: IMPLICIT_KEY_FIELD)
+}

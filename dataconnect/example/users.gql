@@ -1,0 +1,33 @@
+query GetUser($username: String!) {
+  user(username: $username) {
+    username
+    email
+    displayName
+    bio
+    profilePictureUrl
+    isVerified
+  }
+}
+
+query ListUsers {
+  userList {
+    username
+    email
+    displayName
+    profilePictureUrl
+    isVerified
+  }
+}
+
+mutation CreateUser($username: String!, $email: String!, $passwordHash: String!) {
+  user_insert(
+    username: $username
+    email: $email
+    passwordHash: $passwordHash
+  ) {
+    username
+    email
+    isVerified
+    createdAt
+  }
+}

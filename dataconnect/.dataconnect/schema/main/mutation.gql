@@ -1,0 +1,664 @@
+extend type Mutation {
+  """
+  ✨ Insert a single `Business` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  business_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Business_Data!
+  ): Business_KeyOutput! @fdc_generated(from: "Business", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Category` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  category_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Category_Data!
+  ): Category_KeyOutput! @fdc_generated(from: "Category", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Deal` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  deal_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Deal_Data!
+  ): Deal_KeyOutput! @fdc_generated(from: "Deal", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `FavoriteBusiness` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  favoriteBusiness_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: FavoriteBusiness_Data!
+  ): FavoriteBusiness_KeyOutput! @fdc_generated(from: "FavoriteBusiness", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Review` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  review_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Review_Data!
+  ): Review_KeyOutput! @fdc_generated(from: "Review", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `User` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert `Business` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  business_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Business_Data!]!
+  ): [Business_KeyOutput!]! @fdc_generated(from: "Business", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Category` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  category_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Category_Data!]!
+  ): [Category_KeyOutput!]! @fdc_generated(from: "Category", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Deal` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  deal_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Deal_Data!]!
+  ): [Deal_KeyOutput!]! @fdc_generated(from: "Deal", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `FavoriteBusiness` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  favoriteBusiness_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [FavoriteBusiness_Data!]!
+  ): [FavoriteBusiness_KeyOutput!]! @fdc_generated(from: "FavoriteBusiness", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Review` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  review_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Review_Data!]!
+  ): [Review_KeyOutput!]! @fdc_generated(from: "Review", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `User` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert or update a single `Business` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Business`.
+  """
+  business_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Business_Data!
+  ): Business_KeyOutput! @fdc_generated(from: "Business", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Category` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Category`.
+  """
+  category_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Category_Data!
+  ): Category_KeyOutput! @fdc_generated(from: "Category", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Deal` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Deal`.
+  """
+  deal_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Deal_Data!
+  ): Deal_KeyOutput! @fdc_generated(from: "Deal", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `FavoriteBusiness` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `FavoriteBusiness`.
+  """
+  favoriteBusiness_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: FavoriteBusiness_Data!
+  ): FavoriteBusiness_KeyOutput! @fdc_generated(from: "FavoriteBusiness", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Review` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Review`.
+  """
+  review_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Review_Data!
+  ): Review_KeyOutput! @fdc_generated(from: "Review", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `User` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update `Business` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Business`.
+  """
+  business_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Business_Data!]!
+  ): [Business_KeyOutput!]! @fdc_generated(from: "Business", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Category` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Category`.
+  """
+  category_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Category_Data!]!
+  ): [Category_KeyOutput!]! @fdc_generated(from: "Category", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Deal` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Deal`.
+  """
+  deal_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Deal_Data!]!
+  ): [Deal_KeyOutput!]! @fdc_generated(from: "Deal", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `FavoriteBusiness` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `FavoriteBusiness`.
+  """
+  favoriteBusiness_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [FavoriteBusiness_Data!]!
+  ): [FavoriteBusiness_KeyOutput!]! @fdc_generated(from: "FavoriteBusiness", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Review` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Review`.
+  """
+  review_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Review_Data!]!
+  ): [Review_KeyOutput!]! @fdc_generated(from: "Review", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `User` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Update a single `Business` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Business` or `null` if not found.
+  """
+  business_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Business_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Business_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Business_Data!
+  ): Business_KeyOutput @fdc_generated(from: "Business", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Category` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Category` or `null` if not found.
+  """
+  category_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Category_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Category_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Category_Data!
+  ): Category_KeyOutput @fdc_generated(from: "Category", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Deal` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Deal` or `null` if not found.
+  """
+  deal_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Deal_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Deal_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Deal_Data!
+  ): Deal_KeyOutput @fdc_generated(from: "Deal", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `FavoriteBusiness` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `FavoriteBusiness` or `null` if not found.
+  """
+  favoriteBusiness_update(
+    """
+    The key used to identify the object.
+    """
+    key: FavoriteBusiness_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: FavoriteBusiness_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: FavoriteBusiness_Data!
+  ): FavoriteBusiness_KeyOutput @fdc_generated(from: "FavoriteBusiness", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Review` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Review` or `null` if not found.
+  """
+  review_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Review_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Review_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Review_Data!
+  ): Review_KeyOutput @fdc_generated(from: "Review", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `User` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `User` or `null` if not found.
+  """
+  user_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: User_Data!
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update `Business` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  business_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Business_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Business_Data!
+  ): Int! @fdc_generated(from: "Business", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Category` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  category_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Category_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Category_Data!
+  ): Int! @fdc_generated(from: "Category", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Deal` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  deal_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Deal_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Deal_Data!
+  ): Int! @fdc_generated(from: "Deal", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `FavoriteBusiness` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  favoriteBusiness_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: FavoriteBusiness_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: FavoriteBusiness_Data!
+  ): Int! @fdc_generated(from: "FavoriteBusiness", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Review` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  review_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Review_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Review_Data!
+  ): Int! @fdc_generated(from: "Review", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `User` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  user_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: User_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: User_Data!
+  ): Int! @fdc_generated(from: "User", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Delete a single `Business` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  business_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Business_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Business_FirstRow
+  ): Business_KeyOutput @fdc_generated(from: "Business", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Category` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  category_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Category_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Category_FirstRow
+  ): Category_KeyOutput @fdc_generated(from: "Category", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Deal` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  deal_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Deal_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Deal_FirstRow
+  ): Deal_KeyOutput @fdc_generated(from: "Deal", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `FavoriteBusiness` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  favoriteBusiness_delete(
+    """
+    The key used to identify the object.
+    """
+    key: FavoriteBusiness_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: FavoriteBusiness_FirstRow
+  ): FavoriteBusiness_KeyOutput @fdc_generated(from: "FavoriteBusiness", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Review` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  review_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Review_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Review_FirstRow
+  ): Review_KeyOutput @fdc_generated(from: "Review", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `User` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  user_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete `Business` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  business_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Business_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Business", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Category` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  category_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Category_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Category", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Deal` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  deal_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Deal_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Deal", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `FavoriteBusiness` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  favoriteBusiness_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: FavoriteBusiness_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "FavoriteBusiness", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Review` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  review_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Review_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Review", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `User` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  user_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: User_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "User", purpose: DELETE_MULTIPLE)
+}

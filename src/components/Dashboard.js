@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import React from 'react'
 import { Card, Button, Alert } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
@@ -6,8 +6,23 @@ import { useAuth } from '../context/AuthContext'
 
 export default function Dashboard() {
     const [error, setError] = useState("");
-    const {currentUser, logout} = useAuth();
+    const {currentUser, logout, dataConnect} = useAuth();
     const navigate = useNavigate();
+
+    useEffect(() => {
+      // Fetch user data from database
+      const fetchUserData = async () => {
+        try {
+          await dataConnect.query('GetUser', { username: currentUser.email.split('@')[0] });
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+        }
+      };
+      
+      if (currentUser) {
+        fetchUserData();
+      }
+    }, [currentUser, dataConnect]);
 
     async function handleLogout(){
         setError('');

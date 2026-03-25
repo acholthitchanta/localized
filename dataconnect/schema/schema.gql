@@ -1,0 +1,56 @@
+type User @table {
+  username: String!
+  email: String!
+  passwordHash: String!
+  createdAt: Timestamp!
+  isVerified: Boolean!
+  displayName: String
+  profilePictureUrl: String
+  bio: String
+}
+
+type Business @table {
+  name: String!
+  address: String!
+  city: String!
+  state: String!
+  zipCode: String!
+  phoneNumber: String!
+  category: Category!
+  createdAt: Timestamp!
+  description: String
+  website: String
+  openingHours: String
+  photoUrl: String
+}
+
+type Category @table {
+  name: String!
+  description: String
+}
+
+type Review @table {
+  user: User!
+  business: Business!
+  rating: Int!
+  comment: String!
+  createdAt: Timestamp!
+  imageUrls: [String]
+}
+
+type Deal @table {
+  business: Business!
+  title: String!
+  description: String!
+  startDate: Timestamp!
+  endDate: Timestamp!
+  dealType: String!
+  discountAmount: Float
+  couponCode: String
+}
+
+type FavoriteBusiness @table(key: ["user", "business"]) {
+  user: User!
+  business: Business!
+  createdAt: Timestamp!
+}

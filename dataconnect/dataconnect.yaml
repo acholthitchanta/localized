@@ -1,0 +1,13 @@
+specVersion: "v1"
+serviceId: "localized-arkansas-service"
+location: "us-south1"
+schemas:
+  - source: "./schema"
+    datasource:
+      postgresql:
+        database: "localized-arkansas-database"
+        cloudSql:
+          instanceId: "localized-arkansas-instance"
+          # schemaValidation: "STRICT"     # STRICT mode makes Postgres schema match Data Connect exactly.
+          # schemaValidation: "COMPATIBLE" # COMPATIBLE mode makes Postgres schema compatible with Data Connect.
+connectorDirs: ["./example"]

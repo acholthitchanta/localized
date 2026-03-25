@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getDataConnect } from "@firebase/data-connect";
 
 
 const firebaseConfig = {
@@ -15,6 +16,7 @@ const firebaseConfig = {
 //initialize firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const dataConnect = getDataConnect(app);
 
 
-export {app, auth};
+export {app, auth, dataConnect};
