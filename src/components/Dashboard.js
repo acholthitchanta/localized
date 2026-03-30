@@ -3,6 +3,7 @@ import React from 'react'
 import { Card, Button, Alert } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import Restaurant from './Restaurant'
 
 export default function Dashboard() {
     const [error, setError] = useState("");
@@ -22,6 +23,9 @@ export default function Dashboard() {
   return (
     <div>
       <>
+        <Restaurant></Restaurant>
+        <button onClick={createTestBusiness}>Create Test Business</button>
+
         <Card>
             <Card.Body>
                 <h2 className="text-center mb-4">Profile</h2>

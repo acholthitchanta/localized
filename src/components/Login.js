@@ -17,7 +17,12 @@ export default function Login() {
         try{
             setError('')
             setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
+            const result = await login(emailRef.current.value, passwordRef.current.value)
+
+            if (!result.user.emailVerified){
+                await result.user.auth.signOut()
+                return setError("Please verify your email before logging in.")
+            }
             navigate('/')
         }
         catch{

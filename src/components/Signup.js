@@ -2,6 +2,7 @@ import React, {useRef, useState, useEffect} from 'react'
 import { Card, Form, Button, Alert } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
+import { sendEmailVerification } from 'firebase/auth';
 
 
 export default function SignUp() {
@@ -12,6 +13,7 @@ export default function SignUp() {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
+    const [verificationSent, setVerificationSent] = useState(false)
 
     async function handleSubmit(e){
         e.preventDefault()
@@ -22,11 +24,19 @@ export default function SignUp() {
 
         try{
             setError('')
-            setLoading(true)
-            navigate('/')
-            await signup(emailRef.current.value, passwordRef.current.value)
+
+            //sign up 
+            const result = await signup(emailRef.current.value, passwordRef.current.value)
+
+            await sendEmailVerification(result.user)
+
+            await result.user.auth.signOut()
+
+            setVerificationSent(true)
+
         }
         catch{
+            console.log(error.code)
             setError('failed to create an account')
         }
         setLoading(false)
@@ -37,7 +47,13 @@ export default function SignUp() {
     <Card>
         <Card.Body>
             <h2 className="text-center mb-4">Sign Up</h2>
+            {verificationSent? (
+                <Alert variant="success">A email verification has been sent to your inbox. Please verify your email before you login</Alert>
+            ): (
+                
+            <>
             {error && <Alert variant="danger">{error}</Alert>}
+
             <Form onSubmit={handleSubmit}>
                 <Form.Group id="email">
                     <Form.Label>Email</Form.Label>
@@ -56,6 +72,8 @@ export default function SignUp() {
 
                 <Button disabled={loading} className="w-100  mt-3" type="submit">Sign Up</Button>
             </Form>
+            </>
+            )}
         </Card.Body>
     </Card>
     <div className="w-100 text-center mt-2">

@@ -1,0 +1,45 @@
+import {db} from '../firebase'
+import{
+    collection, doc, addDoc, getDoc, getDocs, updateDoc, deleteDoc, query, where, orderBy, runTransaction, serverTimestamp, increment
+} from 'firebase/firestore'
+
+
+export async function createBusiness(data){
+    return await addDoc(collection(db, 'businesses'), {
+        ...data,
+        averageRating: 0,
+        totalRatings: 0,
+        ratingBreakdown: {1:0, 2:0, 3:0, 4:0, 5:0},
+        createdAt: serverTimestamp()
+    })
+}
+
+export async function getBusiness(businessId){
+    const snap = await getDataConnect(doc(db, 'businesses', businessId))
+    return {id: snap.id, ...snap.data()}
+}
+
+export async function getAllBusinesses() {
+    const snap = await getDocs(collection(db, 'businesses'))
+    return snap.docs.map(d => ({id: d.id, ...d.data()}))
+}
+
+export async function getBusinessByCategory(category){
+    const q = query(
+        collection(db, 'business'),
+        where('category', '==', category)
+    )
+    const snap = await getDocs(q)
+    return snap.docs.map(d=>({id:d.id, ...d.data()}))
+}
+
+export async function submitReview(businessId, userId, userEmail, rating, title, body){
+    const businessRef = doc(db, 'businesses', businessId)
+    const reviewsRef = collection(db, 'business', businessId, 'reviews')
+
+    await runTransaction(db, async(transaction)=>{
+        const businessDoc = await transaction.get(businessRef)
+        const data = businessDoc.data()
+    })
+}
+
