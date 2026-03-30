@@ -3,6 +3,8 @@ Your program should include features such as:
 • Sorting businesses by category (e.g., food, retail, services)
 • Allowing users to leave reviews or ratings
 • Sorting businesses by reviews or ratings
+• Implementing a verification step to prevent bot activity
+
+
 • Saving or bookmarking favorite businesses
 • Include a way to display special deals or coupons
-• Implementing a verification step to prevent bot activity

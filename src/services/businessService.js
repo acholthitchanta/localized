@@ -33,6 +33,9 @@ export async function getBusinessByCategory(category){
     return snap.docs.map(d=>({id:d.id, ...d.data()}))
 }
 
+
+//reviews & ratings section
+
 export async function submitReview(businessId, userId, userEmail, rating, title, body){
     const businessRef = doc(db, 'businesses', businessId)
     const reviewsRef = collection(db, 'business', businessId, 'reviews')
@@ -40,6 +43,52 @@ export async function submitReview(businessId, userId, userEmail, rating, title,
     await runTransaction(db, async(transaction)=>{
         const businessDoc = await transaction.get(businessRef)
         const data = businessDoc.data()
+
+        const newTotal = data.totalRatings + 1
+        const newAverage = ((data.averageRating * data.totalRatings) + rating)/newTotal
+
+        transaction.update(businessRef, {
+            averageRating: parseFloat(newAverage.toFixed(1)),
+            totalRatings: newTotal,
+            [`ratingBreakdown.${rating}`]: increment(1)
+        })
+
+        await addDoc(reviewsRef,{
+            userId,
+            userEmail,
+            rating,
+            title,
+            body, 
+            createdAt: serverTimestamp()
+        })
     })
 }
 
+export async function getReviews(businessId){
+    const q = query(
+        collection(db, 'businesses'),
+        where('businessId', '==', businessId)
+    )
+    const snap = await getDocs(q)
+    return snap.docs.map(d => ({
+        id: d.id, ...d.data()
+    }))
+}
+
+export async function hasUserReviewed(businessId, userId){
+    const q = query(
+        collection(db, 'business', businessId, 'reviews'),
+        where ('userId', '==', userId)
+    )
+    const snap = await getDocs(q)
+    return !snap.empty //true if user alr left a review
+}
+
+//deals section
+export async function addDeal(businessId, dealData){
+    return await addDoc(collection(db, 'businesses', businessId, 'deals'), {
+        ...dealData,
+        isActive: true,
+        createdAt: serverTimestamp()
+    })
+}
