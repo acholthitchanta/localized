@@ -92,3 +92,11 @@ export async function addDeal(businessId, dealData){
         createdAt: serverTimestamp()
     })
 }
+
+export async function getActiveDeals(businessId){
+    const q = query(
+        collection(db, 'businesses', businessId, 'deals'),
+        where('isActive', '==', true),
+        where('expiryDate', '>', new Date())
+    )
+}

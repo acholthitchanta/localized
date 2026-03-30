@@ -24,8 +24,6 @@ export default function Dashboard() {
     <div>
       <>
         <Restaurant></Restaurant>
-        <button onClick={createTestBusiness}>Create Test Business</button>
-
         <Card>
             <Card.Body>
                 <h2 className="text-center mb-4">Profile</h2>
