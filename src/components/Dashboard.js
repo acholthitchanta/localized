@@ -24,7 +24,6 @@ export default function Dashboard() {
     <div>
       <>
         <Restaurant></Restaurant>
-        {/* <button onClick={createTestBusiness}>Create Test Business</button> */}
 
         <Card>
             <Card.Body>
