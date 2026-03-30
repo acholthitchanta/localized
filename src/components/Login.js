@@ -2,6 +2,8 @@ import React, {useRef, useState, useEffect} from 'react'
 import { Card, Form, Button, Alert } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext';
 import { Link, useNavigate} from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 
 export default function Login() {
     const emailRef = useRef();
@@ -20,7 +22,7 @@ export default function Login() {
             const result = await login(emailRef.current.value, passwordRef.current.value)
 
             if (!result.user.emailVerified){
-                await result.user.auth.signOut()
+                await signOut(auth)
                 return setError("Please verify your email before logging in.")
             }
             navigate('/')

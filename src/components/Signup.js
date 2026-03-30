@@ -2,7 +2,8 @@ import React, {useRef, useState, useEffect} from 'react'
 import { Card, Form, Button, Alert } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
-import { sendEmailVerification } from 'firebase/auth';
+import { sendEmailVerification, signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 
 
 export default function SignUp() {
@@ -30,13 +31,13 @@ export default function SignUp() {
 
             await sendEmailVerification(result.user)
 
-            await result.user.auth.signOut()
+            await signOut(auth)
 
             setVerificationSent(true)
 
         }
-        catch{
-            console.log(error.code)
+        catch(err){
+            console.log(err.code)
             setError('failed to create an account')
         }
         setLoading(false)

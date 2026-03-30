@@ -15,7 +15,7 @@ export async function createBusiness(data){
 }
 
 export async function getBusiness(businessId){
-    const snap = await getDataConnect(doc(db, 'businesses', businessId))
+    const snap = await getDoc(doc(db, 'businesses', businessId))
     return {id: snap.id, ...snap.data()}
 }
 
@@ -26,7 +26,7 @@ export async function getAllBusinesses() {
 
 export async function getBusinessByCategory(category){
     const q = query(
-        collection(db, 'business'),
+        collection(db, 'businesses'),
         where('category', '==', category)
     )
     const snap = await getDocs(q)
@@ -38,7 +38,7 @@ export async function getBusinessByCategory(category){
 
 export async function submitReview(businessId, userId, userEmail, rating, title, body){
     const businessRef = doc(db, 'businesses', businessId)
-    const reviewsRef = collection(db, 'business', businessId, 'reviews')
+    const reviewsRef = collection(db, 'businesses', businessId, 'reviews')
 
     await runTransaction(db, async(transaction)=>{
         const businessDoc = await transaction.get(businessRef)
