@@ -85,10 +85,11 @@ export async function hasUserReviewed(businessId, userId){
 }
 
 //deals section
-export async function addDeal(businessId, dealData){
+export async function addDeal(businessId, dealData, expiration){
     return await addDoc(collection(db, 'businesses', businessId, 'deals'), {
         ...dealData,
         isActive: true,
+        expiryDate: expiration,
         createdAt: serverTimestamp()
     })
 }
@@ -99,4 +100,48 @@ export async function getActiveDeals(businessId){
         where('isActive', '==', true),
         where('expiryDate', '>', new Date())
     )
+    const snap = await getDocs(q)
+    return snap.docs.map(d => ({id:d.id, ...d.data()}))
 }
+
+export async function getAllDeals(businessId){
+    const snap = await getDocs(collection(db, 'businesses', businessId, 'deals'))
+    return snap.docs.map(d => ({id: d.id, ...d.data()}))
+}
+
+export async function deactivateDeal(businessId, dealId){
+    await updateDoc(doc(db, 'businesses', businessId, 'deals', dealId),{
+        isActive: false
+    })
+}
+
+export async function deleteDeal(businessId, dealId){
+    await deleteDoc(doc(db, 'businesses', businessId, 'deals', dealId))
+}
+
+//bookmarks
+
+export async function bookmarkBusiness(userId, businessId){
+    const ref = doc(db, 'users', userId, 'bookmarks', businessId)
+    await setDoc(ref, {
+        businessId,
+        savedAt: serverTimestamp()
+    })
+}
+
+export async function removeBookmark(userId, businessId){
+    await deleteDoc(doc(db, 'users', userId, 'bookmarks', businessId))
+}
+
+export async function isBookmarked(userId, businessId){
+    const ref = doc(db, 'users', userId, 'bookmarks', businessId)
+    const snap = await getDoc(ref)
+    return snap.exists()
+}
+
+export async function getUserBookmarks(userId){
+    const snap = doc(db, 'users', userId, 'bookmarks')
+    return snap.docs.map(d => d.data().businessId)
+}
+
+
