@@ -12,6 +12,7 @@ export default function Restaurant() {
       try {
         setLoading(true)
         const data = await getAllBusinesses()
+        console.log('Businesses fetched:', data)
         setBusinesses(data)
         setError(null)
       } catch (err) {
