@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PrivateRoute from './PrivateRoute'
 import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
+import AddBusiness from "./AddBusiness";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
                   <Route path="/" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
                   <Route path="/signup" element={<SignUp/>} />
                   <Route path="/login" element={<Login/>} />
+                  <Route path="/addbusiness" element={<AddBusiness/>} />
                   <Route path="/forgot-password" element={<ForgotPassword/>} />
                   <Route path="/update-profile" element={<PrivateRoute><UpdateProfile/></PrivateRoute>}/>
                 </Routes>
