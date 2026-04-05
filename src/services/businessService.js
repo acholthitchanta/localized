@@ -1,7 +1,16 @@
-import {db} from '../firebase'
+import {db, storage} from '../firebase'
 import{
     collection, doc, addDoc, getDoc, getDocs, updateDoc, deleteDoc, query, where, orderBy, runTransaction, serverTimestamp, increment
 } from 'firebase/firestore'
+
+import {ref, uploadBytes, getDownloadURL} from 'firebase/storage'
+
+
+export async function uploadLogo(file){
+    const storageRef = ref(storage, `logo/${Date.now()}_${file.name}`)
+    await uploadBytes(storageRef, file)
+    return await getDownloadURL(storageRef)
+}
 
 
 export async function createBusiness(data){
@@ -123,7 +132,7 @@ export async function deleteDeal(businessId, dealId){
 
 export async function bookmarkBusiness(userId, businessId){
     const ref = doc(db, 'users', userId, 'bookmarks', businessId)
-    await setDoc(ref, {
+    await addDoc(ref, {
         businessId,
         savedAt: serverTimestamp()
     })

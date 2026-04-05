@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Card, Button, Alert, Spinner } from 'react-bootstrap'
 import { getAllBusinesses } from '../services/businessService'
+import Business from './Business'
 
 export default function Restaurant() {
   const [businesses, setBusinesses] = useState([])
@@ -46,20 +47,7 @@ export default function Restaurant() {
         <Alert variant="info">No businesses available at this time.</Alert>
       ) : (
         businesses.map((business) => (
-          <Card key={business.id} style={{ width: '50vw', margin: '1rem auto' }}>
-            <Card.Body>
-              <Card.Title style={{ fontSize: '2rem' }}>
-                {business.name || 'Unnamed Business'}
-              </Card.Title>
-              {business.category && (
-                <Card style={{ width: 'fit-content', margin: '1rem 0' }}>
-                  <Card.Title style={{ margin: 'auto', padding: '0.5rem' }}>
-                    {business.category}
-                  </Card.Title>
-                </Card>
-              )}
-            </Card.Body>
-          </Card>
+          <Business business={business}/>
         ))
       )}
     </div>

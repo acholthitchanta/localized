@@ -3,7 +3,7 @@ import React from 'react'
 import { Card, Button, Alert } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import Restaurant from './Restaurant'
+import Businesses from './Businesses'
 
 export default function Dashboard() {
     const [error, setError] = useState("");
@@ -23,7 +23,7 @@ export default function Dashboard() {
   return (
     <div>
       <>
-        <Restaurant></Restaurant>
+        <Businesses/>
         <Card>
             <Card.Body>
                 <h2 className="text-center mb-4">Profile</h2>
