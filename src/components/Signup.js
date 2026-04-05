@@ -45,7 +45,7 @@ export default function SignUp() {
     }
   return (
     <>
-    <Card>
+    <Card className="w-100" style={{maxWidth: '400px'}}>
         <Card.Body>
             <h2 className="text-center mb-4">Sign Up</h2>
             {verificationSent? (

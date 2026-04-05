@@ -4,6 +4,7 @@ import { Card, Button, Alert } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import Businesses from './Businesses'
+import NavigationBar from './NavigationBar'
 
 export default function Dashboard() {
     const [error, setError] = useState("");
@@ -23,6 +24,7 @@ export default function Dashboard() {
   return (
     <div>
       <>
+
         <Businesses/>
         <Card>
             <Card.Body>

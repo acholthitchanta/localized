@@ -42,7 +42,7 @@ export default function Restaurant() {
   }
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div style={{margin:'auto'}}>
       {businesses.length === 0 ? (
         <Alert variant="info">No businesses available at this time.</Alert>
       ) : (

@@ -1,6 +1,7 @@
 TODO 
 - rename restaurant.js to businesses.js and have it comprised of another file called business.js which displays each business from parent
 - implement admin page for adding businesses
+
 - implement rating businesses for users
 - implement displaying average rating of businesses and update once rating is added
 - implement soring businesses by category

@@ -10,10 +10,11 @@ export default function AddBusiness() {
     const categoryRef = useRef();
     const dealRef = useRef();
     const logoRef = useRef();
+    const addressRef = useRef();
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState('')
-    
+    const navigate = useNavigate();
 
     async function handleSubmit(e){
         e.preventDefault()
@@ -36,11 +37,15 @@ export default function AddBusiness() {
                 name: nameRef.current.value,
                 category: categoryRef.current.value,
                 deal: dealRef.current.value || "",
+                address: addressRef.current.value,
                 logo: logoURL
             })
+
+            navigate('/')
         }
         catch(err){
             setError("Failed to add business")
+            setLoading(false)
             console.error(err)
         }
 
@@ -56,6 +61,10 @@ export default function AddBusiness() {
                 <Form.Group id="name">
                     <Form.Label>Name</Form.Label>
                     <Form.Control type="text" ref={nameRef} required />
+                </Form.Group>
+                <Form.Group id="address">
+                    <Form.Label>Address</Form.Label>
+                    <Form.Control type="text" ref={addressRef} required />
                 </Form.Group>
 
                 <Form.Group id="category">

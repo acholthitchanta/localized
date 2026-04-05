@@ -9,24 +9,26 @@ import PrivateRoute from './PrivateRoute'
 import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
 import AddBusiness from "./AddBusiness";
+import NavigationBar from "./NavigationBar";
+import './index.css';
+
 
 function App() {
   return (
     <AuthProvider>
-      <Container className="d-flex align-items-center justify-content-center" style={{minHeight:"100vh"}}>
-          <div className="w-100" style={{maxWidth: '400px'}}>
-            <Router>
-                <Routes>
-                  <Route path="/" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
-                  <Route path="/signup" element={<SignUp/>} />
-                  <Route path="/login" element={<Login/>} />
-                  <Route path="/addbusiness" element={<AddBusiness/>} />
-                  <Route path="/forgot-password" element={<ForgotPassword/>} />
-                  <Route path="/update-profile" element={<PrivateRoute><UpdateProfile/></PrivateRoute>}/>
-                </Routes>
-            </Router>
-          </div>
-      </Container>
+      <Router>
+        <NavigationBar/>
+          <Container className="d-flex align-items-center justify-content-center" style={{minHeight:"100vh", flexDirection: 'column'}}>
+            <Routes>
+              <Route path="/" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
+              <Route path="/signup" element={<SignUp/>} />
+              <Route path="/login" element={<Login/>} />
+              <Route path="/addbusiness" element={<AddBusiness/>} />
+              <Route path="/forgot-password" element={<ForgotPassword/>} />
+              <Route path="/update-profile" element={<PrivateRoute><UpdateProfile/></PrivateRoute>}/>
+            </Routes>
+          </Container>
+      </Router>
     </AuthProvider>
 
   );
