@@ -1,10 +1,8 @@
-Your program should include features such as:
-
-• Sorting businesses by category (e.g., food, retail, services)
-• Allowing users to leave reviews or ratings
-• Sorting businesses by reviews or ratings
-• Implementing a verification step to prevent bot activity
-
-
-• Saving or bookmarking favorite businesses
-• Include a way to display special deals or coupons
+TODO 
+- rename restaurant.js to businesses.js and have it comprised of another file called business.js which displays each business from parent
+- implement admin page for adding businesses
+- implement rating businesses for users
+- implement displaying average rating of businesses and update once rating is added
+- implement soring businesses by category
+- implement bookmarking 
+- implement displaying deals 
