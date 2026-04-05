@@ -16,6 +16,7 @@ export default function NavigationBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link onClick={() => navigate('/')}>HOME</Nav.Link>
+            <Nav.Link onClick={() => navigate('/')}>ADD BUSINESS</Nav.Link>
             <NavDropdown title="SETTINGS" id="basic-nav-dropdown">
               <NavDropdown.Item onClick={() => navigate('/update-profile')}>View Profile</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
