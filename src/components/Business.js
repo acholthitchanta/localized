@@ -1,11 +1,52 @@
 import React from 'react'
 import { Card, Button, Alert, Spinner } from 'react-bootstrap'
 import ReactStars from 'react-stars'
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getBusiness } from '../services/businessService';
 
-export default function Business({business}) {
+export default function Business() {
+  const {id} = useParams();
+  const [business, setBusiness] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect( ()=>{
+    const fetchBusinesses = async(id) => {
+      try{
+          setLoading(true)
+          const data = await getBusiness(id)
+          console.log("Business fetched: ", data)
+          setBusiness(data)
+          setError(null)
+      } catch (err){
+        console.error("Error fetching busienss:", err)
+        setError(err)
+      }
+      finally{
+        setLoading(false)
+      }
+    }
+    fetchBusinesses(id)
+  }, [])
+
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    )
+  }
+
+  if (error) {
+    return <Alert variant="danger">{error}</Alert>
+  }
+
   return (
     <>
-    <Card key={business.id} style={{ width: '50vw', margin: '1rem auto' }}>
+    <Card key={business.id} style={{ width: '90vw' }}>
         <Card.Body style={{display:'flex', gap:'30px'}}>
             <Card.Img src={business.logo} style={{height: '200px', width:'200px', objectFit:'cover'}}/>
             <div>

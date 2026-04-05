@@ -10,6 +10,8 @@ import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
 import AddBusiness from "./AddBusiness";
 import NavigationBar from "./NavigationBar";
+import ViewProfile from "./ViewProfile";
+import Business from "./Business";
 import './index.css';
 
 
@@ -18,14 +20,17 @@ function App() {
     <AuthProvider>
       <Router>
         <NavigationBar/>
-          <Container className="d-flex align-items-center justify-content-center" style={{minHeight:"100vh", flexDirection: 'column'}}>
+          <Container>
             <Routes>
               <Route path="/" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
               <Route path="/signup" element={<SignUp/>} />
               <Route path="/login" element={<Login/>} />
-              <Route path="/addbusiness" element={<AddBusiness/>} />
+              <Route path="/add-business" element={<AddBusiness/>} />
+              <Route path="/business/:id" element={<Business />}/>
               <Route path="/forgot-password" element={<ForgotPassword/>} />
               <Route path="/update-profile" element={<PrivateRoute><UpdateProfile/></PrivateRoute>}/>
+              <Route path="/view-profile" element={<PrivateRoute><ViewProfile/></PrivateRoute>}/>
+
             </Routes>
           </Container>
       </Router>
