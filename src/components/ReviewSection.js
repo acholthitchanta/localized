@@ -15,7 +15,6 @@ export default function ReviewSection({businessId}){
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [error, setError] = useState('')
-    const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState('')
     const {currentUser} = useAuth();
     const [rating, setRating] = useState('')
@@ -30,7 +29,7 @@ export default function ReviewSection({businessId}){
     useEffect(()=>{
         const fetchReviews = async() => {
             try{
-                setLoading(true)
+                setReviewError(true)
                 const data = await getReviews(businessId)
                 console.log("Reviews Fetched:", data)
                 setReviews(data)
@@ -58,7 +57,7 @@ export default function ReviewSection({businessId}){
         }
 
         try {
-            setLoading(true)
+            setReviewLoading(true)
 
             const alreadyReviewed = await hasUserReviewed(businessId, currentUser.uid)
             if (alreadyReviewed) {
@@ -82,7 +81,7 @@ export default function ReviewSection({businessId}){
             console.error(err)
             setError('Failed to submit review. Please try again.')
         } finally {
-            setLoading(false)
+            setReviewLoading(false)
         }
         }
     
@@ -145,8 +144,8 @@ export default function ReviewSection({businessId}){
                     <Form.Control as="textarea" rows={4} ref={bodyRef} placeholder="Tell others about your experience" required />
                 </Form.Group>
 
-                <Button disabled={loading} className="w-100 mt-2" type="submit">
-                    {loading ? <Spinner animation="border" size="sm" /> : 'Submit Review'}
+                <Button disabled={reviewLoading} className="w-100 mt-2" type="submit">
+                    {reviewLoading ? <Spinner animation="border" size="sm" /> : 'Submit Review'}
                 </Button>
                 </Form>
             </Box>

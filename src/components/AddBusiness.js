@@ -71,12 +71,12 @@ export default function AddBusiness() {
                     <Form.Label>Category</Form.Label>
                     <Form.Select type="text" ref={categoryRef} required >
                         <option value="">Select a category</option>
-                        <option value="food">Food & Drink</option>
-                        <option value="clothing">Clothing</option>
-                        <option value="electronics">Electronics</option>
-                        <option value="beauty">Health & Beauty</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="services">Services</option>
+                        <option value="Food & Drink">Food & Drink</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Health & Beauty">Health & Beauty</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Services">Services</option>
                     </Form.Select>
                 </Form.Group>
 

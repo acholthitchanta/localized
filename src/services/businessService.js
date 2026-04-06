@@ -19,7 +19,6 @@ export async function createBusiness(data){
         averageRating: 0,
         totalRatings: 0,
         ratingBreakdown: {1:0, 2:0, 3:0, 4:0, 5:0},
-        reviews: {},
         createdAt: serverTimestamp()
     })
 }
@@ -118,7 +117,7 @@ export async function addDeal(businessId, dealData, expiration){
 // }
 
 export async function getDeal(businessId){
-    const snap = await getDoc(doc(db, 'businesses', businessId, 'deals', 'deal'))
+    const snap = await getDoc(doc(db, 'businesses', businessId, 'deal'))
     if (!snap.exists()) return null
     return { id: snap.id, ...snap.data() }
 }

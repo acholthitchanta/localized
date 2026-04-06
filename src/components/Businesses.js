@@ -12,12 +12,12 @@ import {
 
 const CATEGORIES = [
     'All',
-    'food',
-    'clothing',
-    'electronics',
-    'health & Beauty',
-    'entertainment',
-    'services'
+    'Food & Drink',
+    'Clothing',
+    'Electronics',
+    'Health & Beauty',
+    'Entertainment',
+    'Services'
 ]
 
 export default function Businesses() {
@@ -32,6 +32,14 @@ export default function Businesses() {
     const [selectedCategory, setSelectedCategory] = useState('All')
     const [bookmarks, setBookmarks] = useState({}) 
     const [sortOrder, setSortOrder] = useState('none')
+
+    const [isWide, setIsWide] = useState(window.innerWidth > 1200)
+
+    useEffect(() => {
+        const handleResize = () => setIsWide(window.innerWidth > 1200)
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
     useEffect(() => {
         const fetch = async () => {
             try {
@@ -138,11 +146,17 @@ export default function Businesses() {
                 </Button>
             </div>
 
+            <div style={{
+                display: 'grid',
+                gridTemplateColumns: isWide ? '1fr 1fr' : '1fr',
+                gap: '1rem'
+            }}>
+
             {filtered.length === 0 ? (
                 <Alert variant="info">No businesses found.</Alert>
             ) : (
                 filtered.map(business => (
-                    <Card key={business.id} style={{ marginBottom: '1rem' }}>
+                    <Card key={business.id} style={{ marginBottom: '1rem', maxWidth: isWide ? '600px' : '80vw' }}>
                         <Card.Body style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
                             <Card.Img
                                 src={business.logo}
@@ -206,8 +220,11 @@ export default function Businesses() {
                             />
                         </Card.Body>
                     </Card>
+
                 ))
+
             )}
+            </div>
         </div>
     )
 }

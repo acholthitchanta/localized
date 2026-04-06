@@ -11,6 +11,8 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import ReviewSection from './ReviewSection.js'
 
+
+
 export default function Business() {
   const {id} = useParams();
   const [business, setBusiness] = useState();
@@ -73,7 +75,7 @@ export default function Business() {
 
   return (
     <>
-    <Card key={business.id} style={{ margin: '2rem 0',width: '80vw' }}>
+    <Card key={business.id} style={{ margin: '2rem 0' }}>
         <Card.Body style={{display:'flex', gap:'30px'}}>
             <Card.Img src={business.logo} style={{height: '200px', width:'200px', objectFit:'cover'}}/>
             <div>
@@ -99,6 +101,8 @@ export default function Business() {
             </div>
             </div>
         </Card.Body>
+
+        <div className="flexPanel" style={{display:'flex'}}>
             <Box sx={{ width: '100%', typography: 'body1' }}>
               <TabContext value={value}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -106,7 +110,6 @@ export default function Business() {
                     <Tab label="Overview" value="1" />
                     <Tab label="Reviews" value="2" />
                     <Tab label="Deals" value="3" />
-                    <Tab label="Map" value="4" />
                   </TabList>
                 </Box>
                 <TabPanel value="1">{(business.overview) || "No description available"}</TabPanel>
@@ -124,6 +127,18 @@ export default function Business() {
                 </TabPanel>
               </TabContext>
           </Box>
+          <Card style={{width: '70vw'}}>
+          <iframe 
+              title="Business Location"
+              width="100%"
+              height="400"
+              style={{ border: 1, borderRadius: '8px' }}
+              loading="lazy"
+              allowFullScreen
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(business.address)}&output=embed`}
+          />
+          </Card>
+          </div>
     </Card>
     </>
   )

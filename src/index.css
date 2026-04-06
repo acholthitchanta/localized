@@ -6,3 +6,10 @@
     color: rgb(15, 74, 141);
     cursor: pointer
  }
+
+
+ @media (max-width: 767px){
+   .flexPanel{
+      display: block;
+   }
+ }
