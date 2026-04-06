@@ -3,7 +3,7 @@ import { Card, Button, Alert, Spinner } from 'react-bootstrap'
 import ReactStars from 'react-stars'
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getBusiness, getActiveDeals } from '../services/businessService';
+import { getBusiness, getDeal } from '../services/businessService';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
@@ -16,7 +16,8 @@ export default function Business() {
   const [business, setBusiness] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [deals, setDeals] = useState([])
+  const [deal, setDeal] = useState(null)
+
 
   const [value, setValue] = React.useState('1');
 
@@ -46,8 +47,8 @@ export default function Business() {
     if (!id) return
     const fetchDeals = async () => {
       try {
-        const data = await getActiveDeals(id)
-        setDeals(data)
+        const data = await getDeal(id)
+        setDeal(data)
       } catch (err) {
         console.error("Error fetching deals:", err)
       }
@@ -111,25 +112,15 @@ export default function Business() {
                 <TabPanel value="1">{(business.overview) || "No description available"}</TabPanel>
                 <TabPanel value="2">{(business.reviews) || "Visited? Submit this businesses's first review!"} <ReviewSection businessId={business.id}/></TabPanel>
                 <TabPanel value="3">
-                  {deals.length === 0 ? (
-                    <Alert variant="info">No active deals at this time.</Alert>
-                  ) : (
-                    deals.map(deal => (
-                      <Card key={deal.id} style={{ marginBottom: '1rem' }}>
-                        <Card.Body>
-                          <Card.Title>{deal.title || 'Deal'}</Card.Title>
-                          <Card.Text>{deal.description}</Card.Text>
-                          {deal.expiryDate && (
-                            <small className="text-muted">
-                              Expires: {deal.expiryDate.toDate?.().toLocaleDateString('en-US', {
-                                year: 'numeric', month: 'long', day: 'numeric'
-                              })}
-                            </small>
-                          )}
-                        </Card.Body>
-                      </Card>
-                    ))
-                  )}
+                    {!business.deal ? (
+                        <Alert variant="info">No active deal at this time.</Alert>
+                    ) : (
+                        <Card>
+                            <Card.Body>
+                                <Card.Text>{business.deal}</Card.Text>
+                            </Card.Body>
+                        </Card>
+                    )}
                 </TabPanel>
               </TabContext>
           </Box>

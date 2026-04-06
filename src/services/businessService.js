@@ -102,19 +102,25 @@ export async function addDeal(businessId, dealData, expiration){
     })
 }
 
-export async function getActiveDeals(businessId){
-    const q = query(
-        collection(db, 'businesses', businessId, 'deal'),
-        where('isActive', '==', true),
-        where('expiryDate', '>', new Date())
-    )
-    const snap = await getDocs(q)
-    return snap.docs.map(d => ({id:d.id, ...d.data()}))
-}
+// export async function getActiveDeals(businessId){
+//     const q = query(
+//         collection(db, 'businesses', businessId, 'deal'),
+//         where('isActive', '==', true),
+//         where('expiryDate', '>', new Date())
+//     )
+//     const snap = await getDocs(q)
+//     return snap.docs.map(d => ({id:d.id, ...d.data()}))
+// }
 
-export async function getAllDeals(businessId){
-    const snap = await getDocs(collection(db, 'businesses', businessId, 'deals'))
-    return snap.docs.map(d => ({id: d.id, ...d.data()}))
+// export async function getAllDeals(businessId){
+//     const snap = await getDocs(collection(db, 'businesses', businessId, 'deals'))
+//     return snap.docs.map(d => ({id: d.id, ...d.data()}))
+// }
+
+export async function getDeal(businessId){
+    const snap = await getDoc(doc(db, 'businesses', businessId, 'deals', 'deal'))
+    if (!snap.exists()) return null
+    return { id: snap.id, ...snap.data() }
 }
 
 export async function deactivateDeal(businessId, dealId){
