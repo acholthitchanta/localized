@@ -1,18 +1,19 @@
 import React from "react";
-import SignUp from "./Signup";
-import Login from "./Login";
+import SignUp from "./components/Signup";
+import Login from "./components/Login";
 import { Container } from "react-bootstrap";
-import { AuthProvider } from "../context/AuthContext";
-import Dashboard from "./Dashboard";
+import { AuthProvider } from "./context/AuthContext";
+import Dashboard from "./components/Dashboard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import PrivateRoute from './PrivateRoute'
-import ForgotPassword from "./ForgotPassword";
-import UpdateProfile from "./UpdateProfile";
-import AddBusiness from "./AddBusiness";
-import NavigationBar from "./NavigationBar";
-import ViewProfile from "./ViewProfile";
-import Business from "./Business";
+import PrivateRoute from './components/PrivateRoute'
+import ForgotPassword from "./components/ForgotPassword";
+import UpdateProfile from "./components/UpdateProfile";
+import AddBusiness from "./components/AddBusiness";
+import NavigationBar from "./components/NavigationBar";
+import ViewProfile from "./components/ViewProfile";
+import Business from "./components/Business";
 import './index.css';
+import Bookmarks from "./components/Bookmarks";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
               <Route path="/forgot-password" element={<ForgotPassword/>} />
               <Route path="/update-profile" element={<PrivateRoute><UpdateProfile/></PrivateRoute>}/>
               <Route path="/view-profile" element={<PrivateRoute><ViewProfile/></PrivateRoute>}/>
+              <Route path="/bookmarks" element={<PrivateRoute><Bookmarks/></PrivateRoute>}/>
 
             </Routes>
           </Container>

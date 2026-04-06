@@ -1,26 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Button, Alert, Spinner, Form, InputGroup } from 'react-bootstrap'
+import { Card, Alert, Spinner } from 'react-bootstrap'
 import ReactStars from 'react-stars'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import {
-    getAllBusinesses,
-    bookmarkBusiness,
-    removeBookmark,
-    isBookmarked
-} from '../services/businessService'
+import { getUserBookmarks, getBusiness, removeBookmark } from '../services/businessService'
 
-const CATEGORIES = [
-    'All',
-    'food',
-    'clothing',
-    'electronics',
-    'health & Beauty',
-    'entertainment',
-    'services'
-]
-
-export default function Businesses() {
+export default function Bookmarks() {
     const { currentUser } = useAuth()
     const navigate = useNavigate()
 
@@ -28,58 +13,36 @@ export default function Businesses() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
-    const [search, setSearch] = useState('')
-    const [selectedCategory, setSelectedCategory] = useState('All')
-    const [bookmarks, setBookmarks] = useState({}) 
     useEffect(() => {
-        const fetch = async () => {
+        if (!currentUser) return
+
+        const fetchBookmarks = async () => {
             try {
                 setLoading(true)
-                const data = await getAllBusinesses()
-                setBusinesses(data)
+                const businessIds = await getUserBookmarks(currentUser.uid)
+                const businessDocs = await Promise.all(businessIds.map(id => getBusiness(id)))
+                setBusinesses(businessDocs)
             } catch (err) {
                 console.error(err)
-                setError('Failed to load businesses.')
+                setError('Failed to load bookmarks.')
             } finally {
                 setLoading(false)
             }
-
-            if (currentUser) {
-                try {
-                    const bookmarkStates = {}
-                    await Promise.all(businesses.map(async (b) => {
-                        bookmarkStates[b.id] = await isBookmarked(currentUser.uid, b.id)
-                    }))
-                    setBookmarks(bookmarkStates)
-                } catch (err) {
-                    console.error('Failed to load bookmarks:', err)
-                }
-            }
         }
-        fetch()
+
+        fetchBookmarks()
     }, [currentUser])
 
-    const handleBookmark = async (businessId) => {
-        if (!currentUser) {
-            navigate('/login')
-            return
-        }
+    const handleRemove = async (businessId) => {
         try {
-            if (bookmarks[businessId]) {
-                await removeBookmark(currentUser.uid, businessId)
-                setBookmarks(prev => ({ ...prev, [businessId]: false }))
-            } else {
-                await bookmarkBusiness(currentUser.uid, businessId)
-                setBookmarks(prev => ({ ...prev, [businessId]: true }))
-            }
+            await removeBookmark(currentUser.uid, businessId)
+            setBusinesses(prev => prev.filter(b => b.id !== businessId))
         } catch (err) {
-            console.error('Bookmark error:', err)
+            console.error('Failed to remove bookmark:', err)
         }
     }
 
-    const filtered = businesses
-        .filter(b => selectedCategory === 'All' || b.category === selectedCategory)
-        .filter(b => b.name?.toLowerCase().includes(search.toLowerCase()))
+    if (!currentUser) return <Alert variant="warning" style={{ width: '80vw', margin: '2rem auto' }}>Please log in to view your bookmarks.</Alert>
 
     if (loading) return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
@@ -91,32 +54,12 @@ export default function Businesses() {
 
     return (
         <div style={{ width: '80vw', margin: '2rem auto' }}>
+            <h3 style={{ marginBottom: '1.5rem' }}>Your Bookmarks</h3>
 
-            <InputGroup className="mb-3">
-                <Form.Control
-                    placeholder="Search businesses..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-            </InputGroup>
-
-            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
-                {CATEGORIES.map(cat => (
-                    <Button
-                        key={cat}
-                        variant={selectedCategory === cat ? 'dark' : 'outline-dark'}
-                        size="sm"
-                        onClick={() => setSelectedCategory(cat)}
-                    >
-                        {cat}
-                    </Button>
-                ))}
-            </div>
-
-            {filtered.length === 0 ? (
-                <Alert variant="info">No businesses found.</Alert>
+            {businesses.length === 0 ? (
+                <Alert variant="info">You haven't bookmarked any businesses yet.</Alert>
             ) : (
-                filtered.map(business => (
+                businesses.map(business => (
                     <Card key={business.id} style={{ marginBottom: '1rem' }}>
                         <Card.Body style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
                             <Card.Img
@@ -125,7 +68,6 @@ export default function Businesses() {
                             />
                             <div style={{ flex: 1 }}>
                                 <Card.Title
-                                    className="link"
                                     style={{ fontSize: '1.5rem', cursor: 'pointer' }}
                                     onClick={() => navigate(`/business/${business.id}`)}
                                 >
@@ -163,19 +105,17 @@ export default function Businesses() {
                                 </div>
                             </div>
 
-                            {/* Bookmark button */}
+                            {/* Remove bookmark */}
                             <img
                                 src="/bookmark.png"
-                                alt="bookmark"
-                                onClick={() => handleBookmark(business.id)}
-                                title={currentUser ? (bookmarks[business.id] ? 'Remove bookmark' : 'Bookmark') : 'Login to bookmark'}
+                                alt="remove bookmark"
+                                onClick={() => handleRemove(business.id)}
+                                title="Remove bookmark"
                                 style={{
-                                    width: '25px',
-                                    height: '25px',
+                                    width: '28px',
+                                    height: '28px',
                                     cursor: 'pointer',
-                                    filter: bookmarks[business.id]
-                                        ? 'invert(0) drop-shadow(1px 0 0 black) drop-shadow(-1px 0 0 black) drop-shadow(0 1px 0 black) drop-shadow(0 -1px 0 black)'
-                                        : 'invert(1) drop-shadow(1px 0 0 black) drop-shadow(-1px 0 0 black) drop-shadow(0 1px 0 black) drop-shadow(0 -1px 0 black)',
+                                    filter: 'invert(0) drop-shadow(1px 0 0 black) drop-shadow(-1px 0 0 black) drop-shadow(0 1px 0 black) drop-shadow(0 -1px 0 black)',
                                     transition: 'filter 0.2s ease'
                                 }}
                             />

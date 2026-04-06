@@ -3,20 +3,32 @@ import { Card, Button, Alert, Spinner } from 'react-bootstrap'
 import ReactStars from 'react-stars'
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getBusiness } from '../services/businessService';
+import { getBusiness, getActiveDeals } from '../services/businessService';
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import { TabContext, TabList, TabPanel } from '@mui/lab';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import ReviewSection from './ReviewSection.js'
 
 export default function Business() {
   const {id} = useParams();
   const [business, setBusiness] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [deals, setDeals] = useState([])
+
+  const [value, setValue] = React.useState('1');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   useEffect( ()=>{
     const fetchBusinesses = async(id) => {
       try{
           setLoading(true)
           const data = await getBusiness(id)
-          console.log("Business fetched: ", data)
           setBusiness(data)
           setError(null)
       } catch (err){
@@ -29,6 +41,19 @@ export default function Business() {
     }
     fetchBusinesses(id)
   }, [])
+
+  useEffect(() => {
+    if (!id) return
+    const fetchDeals = async () => {
+      try {
+        const data = await getActiveDeals(id)
+        setDeals(data)
+      } catch (err) {
+        console.error("Error fetching deals:", err)
+      }
+    }
+    fetchDeals()
+  }, [id])
 
   if (loading) {
     return (
@@ -44,9 +69,10 @@ export default function Business() {
     return <Alert variant="danger">{error}</Alert>
   }
 
+
   return (
     <>
-    <Card key={business.id} style={{ width: '90vw' }}>
+    <Card key={business.id} style={{ margin: '2rem 0',width: '80vw' }}>
         <Card.Body style={{display:'flex', gap:'30px'}}>
             <Card.Img src={business.logo} style={{height: '200px', width:'200px', objectFit:'cover'}}/>
             <div>
@@ -67,11 +93,46 @@ export default function Business() {
             <div style={{display: 'flex', gap:'20px', alignItems: 'center'}}>
             {business.averageRating != null &&  <ReactStars count={5} value={business.averageRating} color2="#f5a623" edit={false} size="30"/>}
             {!!(business.averageRating && business.totalRatings) && (
-              <Card.Text>{business.averageRating} (<strong>{business.totalRatings}</strong> ratings)</Card.Text>
+              <Card.Text><strong>{business.averageRating}</strong> ({business.totalRatings} ratings)</Card.Text>
             )}
             </div>
             </div>
         </Card.Body>
+            <Box sx={{ width: '100%', typography: 'body1' }}>
+              <TabContext value={value}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                  <TabList onChange={handleChange} aria-label="lab API tabs example">
+                    <Tab label="Overview" value="1" />
+                    <Tab label="Reviews" value="2" />
+                    <Tab label="Deals" value="3" />
+                    <Tab label="Map" value="4" />
+                  </TabList>
+                </Box>
+                <TabPanel value="1">{(business.overview) || "No description available"}</TabPanel>
+                <TabPanel value="2">{(business.reviews) || "Visited? Submit this businesses's first review!"} <ReviewSection businessId={business.id}/></TabPanel>
+                <TabPanel value="3">
+                  {deals.length === 0 ? (
+                    <Alert variant="info">No active deals at this time.</Alert>
+                  ) : (
+                    deals.map(deal => (
+                      <Card key={deal.id} style={{ marginBottom: '1rem' }}>
+                        <Card.Body>
+                          <Card.Title>{deal.title || 'Deal'}</Card.Title>
+                          <Card.Text>{deal.description}</Card.Text>
+                          {deal.expiryDate && (
+                            <small className="text-muted">
+                              Expires: {deal.expiryDate.toDate?.().toLocaleDateString('en-US', {
+                                year: 'numeric', month: 'long', day: 'numeric'
+                              })}
+                            </small>
+                          )}
+                        </Card.Body>
+                      </Card>
+                    ))
+                  )}
+                </TabPanel>
+              </TabContext>
+          </Box>
     </Card>
     </>
   )

@@ -16,16 +16,12 @@ export default function NavigationBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link onClick={() => navigate('/')}>HOME</Nav.Link>
-            <Nav.Link onClick={() => navigate('/add-business')}>ADD BUSINESS</Nav.Link>
+            <Nav.Link onClick={() => navigate('/bookmarks')}>BOOKMARKS</Nav.Link>
             <NavDropdown title="SETTINGS" id="basic-nav-dropdown">
               <NavDropdown.Item onClick={() => navigate('/view-profile')}>View Profile</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Bookmarks</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
+              <NavDropdown.Item onClick={() => navigate('/add-business')}>
+                Add Business
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

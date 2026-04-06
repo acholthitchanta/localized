@@ -1,6 +1,6 @@
 import {db, storage} from '../firebase'
 import{
-    collection, doc, addDoc, getDoc, getDocs, updateDoc, deleteDoc, query, where, orderBy, runTransaction, serverTimestamp, increment
+    collection, doc, getDoc, addDoc, getDocs, updateDoc, deleteDoc, query, where, orderBy, runTransaction, serverTimestamp, increment, setDoc
 } from 'firebase/firestore'
 
 import {ref, uploadBytes, getDownloadURL} from 'firebase/storage'
@@ -19,18 +19,19 @@ export async function createBusiness(data){
         averageRating: 0,
         totalRatings: 0,
         ratingBreakdown: {1:0, 2:0, 3:0, 4:0, 5:0},
+        reviews: {},
         createdAt: serverTimestamp()
     })
 }
 
-export async function getBusiness(businessId){
+export async function getBusiness(businessId) {
     const snap = await getDoc(doc(db, 'businesses', businessId))
-    return {id: snap.id, ...snap.data()}
+    return { ...snap.data(), id: snap.id }
 }
 
 export async function getAllBusinesses() {
     const snap = await getDocs(collection(db, 'businesses'))
-    return snap.docs.map(d => ({id: d.id, ...d.data()}))
+    return snap.docs.map(d => ({ ...d.data(), id: d.id }))
 }
 
 export async function getBusinessByCategory(category){
@@ -47,7 +48,7 @@ export async function getBusinessByCategory(category){
 
 export async function submitReview(businessId, userId, userEmail, rating, title, body){
     const businessRef = doc(db, 'businesses', businessId)
-    const reviewsRef = collection(db, 'businesses', businessId, 'reviews')
+    const newReviewRef = doc(collection(db, 'businesses', businessId, 'reviews'))
 
     await runTransaction(db, async(transaction)=>{
         const businessDoc = await transaction.get(businessRef)
@@ -62,7 +63,7 @@ export async function submitReview(businessId, userId, userEmail, rating, title,
             [`ratingBreakdown.${rating}`]: increment(1)
         })
 
-        await addDoc(reviewsRef,{
+        transaction.set(newReviewRef,{
             userId,
             userEmail,
             rating,
@@ -73,20 +74,18 @@ export async function submitReview(businessId, userId, userEmail, rating, title,
     })
 }
 
-export async function getReviews(businessId){
+export async function getReviews(businessId) {
     const q = query(
-        collection(db, 'businesses'),
-        where('businessId', '==', businessId)
+        collection(db, 'businesses', businessId, 'reviews'),
+        orderBy('createdAt', 'desc')
     )
     const snap = await getDocs(q)
-    return snap.docs.map(d => ({
-        id: d.id, ...d.data()
-    }))
+    return snap.docs.map(d => ({ ...d.data(), id: d.id }))
 }
 
 export async function hasUserReviewed(businessId, userId){
     const q = query(
-        collection(db, 'business', businessId, 'reviews'),
+        collection(db, 'businesses', businessId, 'reviews'),
         where ('userId', '==', userId)
     )
     const snap = await getDocs(q)
@@ -105,7 +104,7 @@ export async function addDeal(businessId, dealData, expiration){
 
 export async function getActiveDeals(businessId){
     const q = query(
-        collection(db, 'businesses', businessId, 'deals'),
+        collection(db, 'businesses', businessId, 'deal'),
         where('isActive', '==', true),
         where('expiryDate', '>', new Date())
     )
@@ -132,7 +131,7 @@ export async function deleteDeal(businessId, dealId){
 
 export async function bookmarkBusiness(userId, businessId){
     const ref = doc(db, 'users', userId, 'bookmarks', businessId)
-    await addDoc(ref, {
+    await setDoc(ref, {
         businessId,
         savedAt: serverTimestamp()
     })
@@ -149,7 +148,7 @@ export async function isBookmarked(userId, businessId){
 }
 
 export async function getUserBookmarks(userId){
-    const snap = doc(db, 'users', userId, 'bookmarks')
+    const snap = await getDocs(collection(db, 'users', userId, 'bookmarks'))
     return snap.docs.map(d => d.data().businessId)
 }
 
