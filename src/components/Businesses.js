@@ -31,6 +31,7 @@ export default function Businesses() {
     const [search, setSearch] = useState('')
     const [selectedCategory, setSelectedCategory] = useState('All')
     const [bookmarks, setBookmarks] = useState({}) 
+    const [sortOrder, setSortOrder] = useState('none')
     useEffect(() => {
         const fetch = async () => {
             try {
@@ -78,8 +79,13 @@ export default function Businesses() {
     }
 
     const filtered = businesses
-        .filter(b => selectedCategory === 'All' || b.category === selectedCategory)
-        .filter(b => b.name?.toLowerCase().includes(search.toLowerCase()))
+    .filter(b => selectedCategory === 'All' || b.category === selectedCategory)
+    .filter(b => b.name?.toLowerCase().includes(search.toLowerCase()))
+    .sort((a, b) => {
+        if (sortOrder === 'asc') return (a.averageRating ?? 0) - (b.averageRating ?? 0)
+        if (sortOrder === 'desc') return (b.averageRating ?? 0) - (a.averageRating ?? 0)
+        return 0
+    })
 
     if (loading) return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
@@ -111,6 +117,25 @@ export default function Businesses() {
                         {cat}
                     </Button>
                 ))}
+            </div>
+
+            {/* Sort selector */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
+                <span>Sort by rating:</span>
+                <Button
+                    size="sm"
+                    variant={sortOrder === 'asc' ? 'dark' : 'outline-dark'}
+                    onClick={() => setSortOrder(prev => prev === 'asc' ? 'none' : 'asc')}
+                >
+                    ↑ Lowest
+                </Button>
+                <Button
+                    size="sm"
+                    variant={sortOrder === 'desc' ? 'dark' : 'outline-dark'}
+                    onClick={() => setSortOrder(prev => prev === 'desc' ? 'none' : 'desc')}
+                >
+                    ↓ Highest
+                </Button>
             </div>
 
             {filtered.length === 0 ? (
