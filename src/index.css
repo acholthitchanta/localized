@@ -8,6 +8,7 @@
  }
 
 
+
  @media (max-width: 767px){
    .flexPanel{
       display: block !important;
@@ -18,13 +19,6 @@
  @media (max-width: 900px){
    .businessPanel{
       display: block !important;
-   }
- }
-
- @media (max-width: 500px){
-   .blockPanel{
-      flex-direction: column;
-      align-items: center !important;
    }
  }
 
@@ -46,4 +40,35 @@
   background-image: url('../public/user.svg');
   background-size: cover;
   background-position: center;
+}
+
+@media (max-width: 500px) {
+    .blockPanel {
+        flex-direction: column !important;
+        padding: 0 !important;
+        position: relative !important;  
+    }
+
+    .blockPanel .card-img {
+        width: 100% !important;
+        height: 200px !important;
+        border-radius: 8px 8px 0 0 !important;
+        object-fit: cover;
+    }
+
+    .blockPanel > div {
+        padding: 1ren 0;
+        width: 100%;
+    }
+
+   .blockPanel.businessPanel > div {
+        padding: 1rem;
+        width: 100%;
+    }
+
+   .blockPanel > img[alt="bookmark"] {
+        position: absolute !important;
+        bottom: 12px !important;
+        right: 12px !important;
+    }
 }

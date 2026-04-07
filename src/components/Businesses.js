@@ -44,9 +44,12 @@ export default function Businesses() {
         const fetch = async () => {
             try {
                 setLoading(true)
+                //fetching data from the backend 
                 const data = await getAllBusinesses()
                 setBusinesses(data)
             } catch (err) {
+                //in case there is an error fetching businesses
+                //an error message will show up for the users
                 console.error(err)
                 setError('Failed to load businesses.')
             } finally {
@@ -110,7 +113,9 @@ export default function Businesses() {
                 <Form.Control
                     placeholder="Search businesses..."
                     value={search}
+                    className="form"
                     onChange={(e) => setSearch(e.target.value)}
+                    style={{ boxShadow: 'none', outline: 'none'}}
                 />
             </InputGroup>
 
@@ -156,12 +161,26 @@ export default function Businesses() {
                 <Alert variant="info">No businesses found.</Alert>
             ) : (
                 filtered.map(business => (
-                    <Card key={business.id} style={{ marginBottom: '1rem', maxWidth: isWide ? '600px' : '80vw' }}>
-                        <Card.Body className="blockPanel" style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-                            <Card.Img
-                                src={business.logo}
-                                style={{ height: '120px', width: '120px', objectFit: 'cover', borderRadius: '8px' }}
-                            />
+                    <Card key={business.id}  style={{ marginBottom: '1rem', maxWidth: isWide ? '600px' : '80vw' }}>
+                    <Card.Body 
+                        className="blockPanel businessPanel" 
+                        style={{ 
+                            display: 'flex', 
+                            flexDirection: window.innerWidth <= 500 ? 'column' : 'row',  
+                            gap: '30px', 
+                            alignItems: 'center',
+                            padding: window.innerWidth <= 500 ? '0' : undefined  
+                        }}
+                    >
+                        <Card.Img
+                            src={business.logo}
+                            style={{ 
+                                height: window.innerWidth <= 500 ? '200px' : '120px',  
+                                width: window.innerWidth <= 500 ? '100%' : '120px',    
+                                objectFit: 'cover', 
+                                borderRadius: window.innerWidth <= 500 ? '8px 8px 0 0' : '8px'  
+                            }}
+                        />
                             <div style={{ flex: 1 }}>
                                 <Card.Title
                                     className="link"
@@ -197,7 +216,7 @@ export default function Businesses() {
                                         <ReactStars count={5} value={business.averageRating} color2="#f5a623" edit={false} size={20} />
                                     )}
                                     {!!(business.averageRating && business.totalRatings) && (
-                                        <small className="text-muted">{business.averageRating} ({business.totalRatings} ratings)</small>
+                                        <small className="text-muted"><strong>{business.averageRating}</strong> ({business.totalRatings} ratings)</small>
                                     )}
                                 </div>
                             </div>

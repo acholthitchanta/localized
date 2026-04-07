@@ -31,26 +31,22 @@ export default function ReviewSection({businessId}){
         return email.slice(0,dotIndex);
     }
 
-    useEffect(()=>{
-        const fetchReviews = async() => {
-            try{
-                setReviewError(true)
+    useEffect(() => {
+        const fetchReviews = async () => {
+            try {
+                setReviewLoading(true) 
                 const data = await getReviews(businessId)
-                console.log("Reviews Fetched:", data)
                 setReviews(data)
                 setReviewError(null)
-            }
-            catch(err){
+            } catch (err) {
                 console.error("Error fetching review:", err)
                 setReviewError("Failed to load reviews. Please try again")
-            }
-            finally{
+            } finally {
                 setReviewLoading(false)
             }
         }
-
         fetchReviews()
-    }, [])
+    }, [businessId])
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -63,9 +59,8 @@ export default function ReviewSection({businessId}){
 
         try {
             setReviewLoading(true)
-
             const alreadyReviewed = await hasUserReviewed(businessId, currentUser.uid)
-            if (alreadyReviewed) {
+            if (alreadyReviewed) { 
             return setError('You have already reviewed this business.')
             }
 
@@ -94,8 +89,12 @@ export default function ReviewSection({businessId}){
 
         (
         <div>
-            <Button style={{margin: '1rem 0'}} onClick={handleOpen}>Review Business</Button>
-            <Modal
+        <Button 
+            style={{ margin: '1rem 0' }} 
+            onClick={currentUser ? handleOpen : () => navigate('/login')}
+        >
+        {currentUser ? 'Review Business' : 'Log in to Review'}
+        </Button>            <Modal
             open={open}
             onClose={handleClose}
             aria-labelledby="modal-modal-title"
@@ -125,7 +124,7 @@ export default function ReviewSection({businessId}){
                 </Typography>
                 {error && <Alert variant="danger">{error}</Alert>}
                 {message && <Alert variant="success">{message}</Alert>}
-                {!currentUser} ? <Navigate to="/login" replace/> : (<Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                     <Form.Label>Rating</Form.Label>
                     <div>
@@ -152,7 +151,7 @@ export default function ReviewSection({businessId}){
                 <Button disabled={reviewLoading} className="w-100 mt-2" type="submit">
                     {reviewLoading ? <Spinner animation="border" size="sm" /> : 'Submit Review'}
                 </Button>
-                </Form>)
+                </Form>
             </Box>
             </Modal>
             <div>
@@ -162,8 +161,8 @@ export default function ReviewSection({businessId}){
                 reviews.map((review) => (
                     <Card key={review.id} style={{ margin: '1rem 0' }}>
                     <Card.Body>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                        <div className='blockPanel' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                        <div className='blockPanel' style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                             <small className="text-muted user">{username(review.userEmail)}</small>
                             <Card.Title  style={{ marginBottom: 0 }}>{review.title}</Card.Title>
                         </div>

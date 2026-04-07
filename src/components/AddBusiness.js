@@ -11,6 +11,7 @@ export default function AddBusiness() {
     const dealRef = useRef();
     const logoRef = useRef();
     const addressRef = useRef();
+    const descriptionRef = useRef();
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState('')
@@ -38,7 +39,8 @@ export default function AddBusiness() {
                 category: categoryRef.current.value,
                 deal: dealRef.current.value || "",
                 address: addressRef.current.value,
-                logo: logoURL
+                logo: logoURL,
+                description: descriptionRef.current.value
             })
 
             navigate('/')
@@ -62,6 +64,11 @@ export default function AddBusiness() {
                     <Form.Label>Name</Form.Label>
                     <Form.Control type="text" ref={nameRef} required />
                 </Form.Group>
+
+                <Form.Group id="description">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control type="text" ref={descriptionRef} placeholder="Leave blank if no description" />
+                </Form.Group>
                 <Form.Group id="address">
                     <Form.Label>Address</Form.Label>
                     <Form.Control type="text" ref={addressRef} required />
@@ -82,7 +89,7 @@ export default function AddBusiness() {
 
 
                 <Form.Group id="logo">
-                    <Form.Label>Logo</Form.Label>
+                    <Form.Label>Image</Form.Label>
                     <Form.Control type="file" ref={logoRef} required />
                 </Form.Group>
                 
