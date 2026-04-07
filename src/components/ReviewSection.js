@@ -26,6 +26,11 @@ export default function ReviewSection({businessId}){
     const [reviewLoading, setReviewLoading] = useState(false)
     const [reviewError, setReviewError] = useState('')
 
+    function username(email){
+        const dotIndex = email.indexOf('@')
+        return email.slice(0,dotIndex);
+    }
+
     useEffect(()=>{
         const fetchReviews = async() => {
             try{
@@ -87,7 +92,7 @@ export default function ReviewSection({businessId}){
     
         return (
 
-        !currentUser ? <Navigate to="/login" replace/> : (
+        (
         <div>
             <Button style={{margin: '1rem 0'}} onClick={handleOpen}>Review Business</Button>
             <Modal
@@ -120,7 +125,7 @@ export default function ReviewSection({businessId}){
                 </Typography>
                 {error && <Alert variant="danger">{error}</Alert>}
                 {message && <Alert variant="success">{message}</Alert>}
-                <Form onSubmit={handleSubmit}>
+                {!currentUser} ? <Navigate to="/login" replace/> : (<Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                     <Form.Label>Rating</Form.Label>
                     <div>
@@ -147,7 +152,7 @@ export default function ReviewSection({businessId}){
                 <Button disabled={reviewLoading} className="w-100 mt-2" type="submit">
                     {reviewLoading ? <Spinner animation="border" size="sm" /> : 'Submit Review'}
                 </Button>
-                </Form>
+                </Form>)
             </Box>
             </Modal>
             <div>
@@ -159,8 +164,8 @@ export default function ReviewSection({businessId}){
                     <Card.Body>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                            <small className="text-muted">{review.userEmail}</small>
-                            <Card.Title style={{ marginBottom: 0 }}>{review.title}</Card.Title>
+                            <small className="text-muted user">{username(review.userEmail)}</small>
+                            <Card.Title  style={{ marginBottom: 0 }}>{review.title}</Card.Title>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                             <small className="text-muted">

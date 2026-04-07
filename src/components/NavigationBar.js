@@ -3,27 +3,21 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from 'react-router-dom';
+import NavBarDropdown from './NavBarDropdown';
 
 export default function NavigationBar() {
   const navigate = useNavigate()
   return (
-    <Navbar expand="lg" style={{fontSize: '1.3rem'}} className="bg-body-tertiary">
+    <Navbar expand="lg"  style={{fontSize: '1.3rem'}} className="white">
       <Container>
-        <Navbar.Brand style={{fontSize: '2.5rem'}}>LOCALized</Navbar.Brand>
+        <Navbar.Brand className="link" onClick={() => navigate('/')} style={{fontSize: '2.5rem'}}>LOCALized</Navbar.Brand>
 
         <div style={{marginLeft: 'auto', marginRight: '0'}}>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link onClick={() => navigate('/')}>HOME</Nav.Link>
-            <Nav.Link onClick={() => navigate('/bookmarks')}>BOOKMARKS</Nav.Link>
-            <NavDropdown title="SETTINGS" id="basic-nav-dropdown">
-              <NavDropdown.Item onClick={() => navigate('/view-profile')}>View Profile</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item onClick={() => navigate('/add-business')}>
-                Add Business
-              </NavDropdown.Item>
-            </NavDropdown>
+            <NavBarDropdown/>
           </Nav>
         </Navbar.Collapse>
         </div>

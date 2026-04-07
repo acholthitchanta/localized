@@ -157,7 +157,7 @@ export default function Businesses() {
             ) : (
                 filtered.map(business => (
                     <Card key={business.id} style={{ marginBottom: '1rem', maxWidth: isWide ? '600px' : '80vw' }}>
-                        <Card.Body style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
+                        <Card.Body className="blockPanel" style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
                             <Card.Img
                                 src={business.logo}
                                 style={{ height: '120px', width: '120px', objectFit: 'cover', borderRadius: '8px' }}

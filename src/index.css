@@ -3,13 +3,47 @@
  }
 
  .link:hover{
-    color: rgb(15, 74, 141);
+    color: rgb(208, 141, 47);
     cursor: pointer
  }
 
 
  @media (max-width: 767px){
    .flexPanel{
-      display: block;
+      display: block !important;
    }
  }
+
+
+ @media (max-width: 900px){
+   .businessPanel{
+      display: block !important;
+   }
+ }
+
+ @media (max-width: 500px){
+   .blockPanel{
+      flex-direction: column;
+      align-items: center !important;
+   }
+ }
+
+ .user {
+  position: relative;
+  padding-left: 25px; 
+}
+
+.user::before {
+  content: "";          
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 15px;
+  height: 15px;
+
+  background-image: url('../public/user.svg');
+  background-size: cover;
+  background-position: center;
+}

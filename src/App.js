@@ -23,16 +23,15 @@ function App() {
         <NavigationBar/>
           <Container>
             <Routes>
-              <Route path="/" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
+              <Route path="/" element={<Dashboard/>} />
               <Route path="/signup" element={<SignUp/>} />
               <Route path="/login" element={<Login/>} />
-              <Route path="/add-business" element={<AddBusiness/>} />
+              <Route path="/add-business" element={<PrivateRoute><AddBusiness/></PrivateRoute>} />
               <Route path="/business/:id" element={<Business />}/>
               <Route path="/forgot-password" element={<ForgotPassword/>} />
               <Route path="/update-profile" element={<PrivateRoute><UpdateProfile/></PrivateRoute>}/>
               <Route path="/view-profile" element={<PrivateRoute><ViewProfile/></PrivateRoute>}/>
               <Route path="/bookmarks" element={<PrivateRoute><Bookmarks/></PrivateRoute>}/>
-
             </Routes>
           </Container>
       </Router>

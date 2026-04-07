@@ -74,9 +74,9 @@ export default function Business() {
 
 
   return (
-    <>
-    <Card key={business.id} style={{ margin: '2rem 0' }}>
-        <Card.Body style={{display:'flex', gap:'30px'}}>
+<Card className='businessPanel' style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', margin: '2rem 0', border: 'none', borderRadius: '5px', overflow: 'hidden' }}>    
+  <Card key={business.id} style={{borderRadius: '0' }}>
+        <Card.Body className='blockPanel' style={{display:'flex', gap:'30px'}}>
             <Card.Img src={business.logo} style={{height: '200px', width:'200px', objectFit:'cover'}}/>
             <div>
             <Card.Title style={{ fontSize: '2rem' }}>
@@ -88,7 +88,7 @@ export default function Business() {
             rel="noopener noreferrer">{business.address}</a></Card.Text>}
             {business.category && (
             <Card style={{ width: 'fit-content', marginTop:'0.5rem' }}>
-                <Card.Title style={{ margin: 'auto', padding: '0.5rem' }}>
+                <Card.Title style={{ margin: 'auto', padding: '0.5rem', fontSize: '1rem' }}>
                 {business.category}
                 </Card.Title>
             </Card>
@@ -127,19 +127,20 @@ export default function Business() {
                 </TabPanel>
               </TabContext>
           </Box>
-          <Card style={{width: '70vw'}}>
+          </div>
+    </Card>
+    <Card style={{ borderRadius: '0'}}>
           <iframe 
               title="Business Location"
               width="100%"
-              height="400"
+              height="100%"
               style={{ border: 1, borderRadius: '8px' }}
               loading="lazy"
               allowFullScreen
               src={`https://maps.google.com/maps?q=${encodeURIComponent(business.address)}&output=embed`}
           />
-          </Card>
-          </div>
     </Card>
-    </>
+    </Card>
+
   )
 }
