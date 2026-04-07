@@ -47,6 +47,18 @@ export default function Businesses() {
                 //fetching data from the backend 
                 const data = await getAllBusinesses()
                 setBusinesses(data)
+                
+                if (currentUser) {
+                    try {
+                        const bookmarkStates = {}
+                        await Promise.all(data.map(async (b) => {
+                            bookmarkStates[b.id] = await isBookmarked(currentUser.uid, b.id)
+                        }))
+                        setBookmarks(bookmarkStates)
+                    } catch (err) {
+                        console.error('Failed to load bookmarks:', err)
+                    }
+                }
             } catch (err) {
                 //in case there is an error fetching businesses
                 //an error message will show up for the users
@@ -54,18 +66,6 @@ export default function Businesses() {
                 setError('Failed to load businesses.')
             } finally {
                 setLoading(false)
-            }
-
-            if (currentUser) {
-                try {
-                    const bookmarkStates = {}
-                    await Promise.all(businesses.map(async (b) => {
-                        bookmarkStates[b.id] = await isBookmarked(currentUser.uid, b.id)
-                    }))
-                    setBookmarks(bookmarkStates)
-                } catch (err) {
-                    console.error('Failed to load bookmarks:', err)
-                }
             }
         }
         fetch()
